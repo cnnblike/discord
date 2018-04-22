@@ -71,7 +71,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "EnableCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "EnableCell", for: indexPath) as! EnableUITableViewCell
+                // TODO: add actual status here.
+                cell.enableSwitch.isOn = false
+                cell.switchCallback = { (switcher: UISwitch) -> Void in
+                    print("enable switch clicked")
+                    print(switcher.isOn)
+                    // TODO: add change here.
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
@@ -79,16 +86,58 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath) as! ProxyUITableViewCell
+            // TODO: add actual status here
             cell.nameLabel.text = tableData[indexPath.row]
+            cell.detailLabel.text = "detailLabel"
             cell.ruleImage.image = UIImage(named: "default")
+            cell.proxySwitch.isOn = false
+            cell.switchCallback = { (switcher: UISwitch) -> Void in
+                print("proxy switch clicked")
+                print(indexPath, switcher.isOn)
+                // TODO: change it here
+            }
             return cell
         }
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "Config"
+            return "Global"
         }
         return "Rules"
+    }
+
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if indexPath.section == 1 {
+            let detailAction = UITableViewRowAction(style: .normal, title: "Detail") { (uiTableViewRowAction, indexPath) in
+                print("Edit Action")
+                self.tableData[indexPath.row] = "updated" // TODO: change it to switch here.
+                tableView.reloadRows(at: [indexPath], with: .fade)
+                // TODO: updateStored()
+            }
+            let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
+                print("Delete Action")
+                self.tableData.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+                // TODO: updateStored()
+            }
+            return [deleteAction, detailAction]
+        }
+        return []
+    }
+    
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if (indexPath.section == 0) && (indexPath.row != 0) {
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (indexPath.section == 0) || (indexPath.row != 0) {
+            tableView.deselectRow(at: indexPath, animated: true)
+            // TODO: show a legal issue / About issue VC here
+        }
     }
 }
 

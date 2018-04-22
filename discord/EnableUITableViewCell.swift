@@ -1,5 +1,5 @@
 //
-//  ProxyUITableViewCell.swift
+//  EnableUITableViewCell.swift
 //  discord
 //
 //  Created by Ke Li on 4/22/18.
@@ -8,21 +8,18 @@
 
 import UIKit
 
-class ProxyUITableViewCell: UITableViewCell {
+class EnableUITableViewCell: UITableViewCell {
 
     var switchCallback: ((UISwitch) -> Void)?
-    @IBOutlet weak var ruleImage: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var detailLabel: UILabel!
-    @IBOutlet weak var proxySwitch: UISwitch!
     @IBAction func switchChanged(_ sender: UISwitch) {
         switchCallback?(sender)
     }
+    @IBOutlet weak var enableSwitch: UISwitch!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
-    
+
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 

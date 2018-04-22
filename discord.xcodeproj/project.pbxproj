@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1532B5EA208D370A00402772 /* EnableUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532B5E9208D370A00402772 /* EnableUITableViewCell.swift */; };
 		15479D5820897A2C005FE945 /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15479D5720897A2C005FE945 /* PacketTunnelProvider.swift */; };
 		15479D5D20897A2C005FE945 /* FilterProxy.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 15479D5520897A2C005FE945 /* FilterProxy.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		15479D6520897A5E005FE945 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15479D6420897A5E005FE945 /* NetworkExtension.framework */; };
@@ -46,6 +47,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1532B5E9208D370A00402772 /* EnableUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableUITableViewCell.swift; sourceTree = "<group>"; };
 		15479D5520897A2C005FE945 /* FilterProxy.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = FilterProxy.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		15479D5720897A2C005FE945 /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		15479D5920897A2C005FE945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				1563B3CE2089787C00095446 /* AppDelegate.swift */,
 				1563B3D02089787C00095446 /* ViewController.swift */,
 				1563B3D22089787C00095446 /* Main.storyboard */,
+				1532B5E9208D370A00402772 /* EnableUITableViewCell.swift */,
 				15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */,
 				15FF3945208C29620065BBA5 /* QRViewController.swift */,
 				1563B3D52089787D00095446 /* Assets.xcassets */,
@@ -270,6 +273,7 @@
 				15479D68208A7C27005FE945 /* DetailViewController.swift in Sources */,
 				1563B3D12089787C00095446 /* ViewController.swift in Sources */,
 				1563B3CF2089787C00095446 /* AppDelegate.swift in Sources */,
+				1532B5EA208D370A00402772 /* EnableUITableViewCell.swift in Sources */,
 				15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
