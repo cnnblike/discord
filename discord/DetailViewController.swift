@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: ViewController {
+class DetailViewController: UIViewController {
 
     var itemString:String?
     @IBAction func onBackButtonClicked(_ sender: Any) {
