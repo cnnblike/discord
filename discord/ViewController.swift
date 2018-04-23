@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData: [String] = ["Proxy 1","Proxy 2","Proxy 3"]
@@ -50,6 +51,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         // TODO: Load stored data here
+        if Disk.exists("config.json", in: .applicationSupport) {
+            print("exist, no need to create")
+        } else {
+            print("create file")
+        }
     }
 
     override func didReceiveMemoryWarning() {

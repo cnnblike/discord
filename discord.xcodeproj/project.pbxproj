@@ -18,6 +18,18 @@
 		1563B3D42089787C00095446 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D22089787C00095446 /* Main.storyboard */; };
 		1563B3D62089787D00095446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D52089787D00095446 /* Assets.xcassets */; };
 		1563B3D92089787D00095446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D72089787D00095446 /* LaunchScreen.storyboard */; };
+		15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46197208D8ED30086C1C0 /* Alamofire.framework */; };
+		15A461B3208D94EC0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */; };
+		15A461B4208D94EC0086C1C0 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */; };
+		15A461B5208D94EC0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */; };
+		15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A8208D8ED30086C1C0 /* Disk.framework */; };
+		15A461B7208D94EC0086C1C0 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46193208D8ED30086C1C0 /* lwip.framework */; };
+		15A461B8208D94EC0086C1C0 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A4208D8ED30086C1C0 /* MMDB.framework */; };
+		15A461B9208D94EC0086C1C0 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46177208D8ED30086C1C0 /* NEKit.framework */; };
+		15A461BA208D94EC0086C1C0 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46187208D8ED30086C1C0 /* Resolver.framework */; };
+		15A461BB208D94EC0086C1C0 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46196208D8ED30086C1C0 /* Sodium.framework */; };
+		15A461BC208D94EC0086C1C0 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4617C208D8ED30086C1C0 /* tun2socks.framework */; };
+		15A461BD208D94EC0086C1C0 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4619B208D8ED30086C1C0 /* Yaml.framework */; };
 		15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3945208C29620065BBA5 /* QRViewController.swift */; };
 		15FF3948208C4F220065BBA5 /* ProxyUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +74,73 @@
 		1563B3D52089787D00095446 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1563B3D82089787D00095446 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1563B3DA2089787D00095446 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		15A4616E208D8ED30086C1C0 /* .Sodium-framework.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".Sodium-framework.version"; sourceTree = "<group>"; };
+		15A4616F208D8ED30086C1C0 /* .SwiftyJSON.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .SwiftyJSON.version; sourceTree = "<group>"; };
+		15A46170208D8ED30086C1C0 /* .Alamofire.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Alamofire.version; sourceTree = "<group>"; };
+		15A46171208D8ED30086C1C0 /* .Resolver.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Resolver.version; sourceTree = "<group>"; };
+		15A46172208D8ED30086C1C0 /* .tun2socks.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .tun2socks.version; sourceTree = "<group>"; };
+		15A46173208D8ED30086C1C0 /* .Disk.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .Disk.version; sourceTree = "<group>"; };
+		15A46175208D8ED30086C1C0 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		15A46176208D8ED30086C1C0 /* B6798835-57A3-3004-8C93-D6CDD213BE34.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "B6798835-57A3-3004-8C93-D6CDD213BE34.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46177208D8ED30086C1C0 /* NEKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NEKit.framework; sourceTree = "<group>"; };
+		15A46178208D8ED30086C1C0 /* 8B574C96-1F18-361B-93C0-716AEFCF9A06.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "8B574C96-1F18-361B-93C0-716AEFCF9A06.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46179208D8ED30086C1C0 /* 61E2A907-1309-3A42-9317-80092B741382.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "61E2A907-1309-3A42-9317-80092B741382.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4617A208D8ED30086C1C0 /* 04AF01DA-04AD-3B81-B3AF-40042B36CC0D.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "04AF01DA-04AD-3B81-B3AF-40042B36CC0D.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4617B208D8ED30086C1C0 /* Resolver.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Resolver.framework.dSYM; sourceTree = "<group>"; };
+		15A4617C208D8ED30086C1C0 /* tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = tun2socks.framework; sourceTree = "<group>"; };
+		15A4617D208D8ED30086C1C0 /* CocoaAsyncSocket.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CocoaAsyncSocket.framework.dSYM; sourceTree = "<group>"; };
+		15A4617E208D8ED30086C1C0 /* A3599F73-6AD1-3E69-BA19-209372C10C25.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A3599F73-6AD1-3E69-BA19-209372C10C25.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4617F208D8ED30086C1C0 /* Sodium.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Sodium.framework.dSYM; sourceTree = "<group>"; };
+		15A46180208D8ED30086C1C0 /* B558C55B-6D9E-3D34-865F-8F7853B9F1C3.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "B558C55B-6D9E-3D34-865F-8F7853B9F1C3.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46181208D8ED30086C1C0 /* 3D01C946-C7C6-38B0-ADE0-5508370C30F4.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "3D01C946-C7C6-38B0-ADE0-5508370C30F4.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46182208D8ED30086C1C0 /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
+		15A46183208D8ED30086C1C0 /* 5A733B87-FFFB-3568-9813-6122EE77B853.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "5A733B87-FFFB-3568-9813-6122EE77B853.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46184208D8ED30086C1C0 /* NEKit.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = NEKit.framework.dSYM; sourceTree = "<group>"; };
+		15A46185208D8ED30086C1C0 /* ED092683-6960-3A50-896F-AD27F19B7703.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ED092683-6960-3A50-896F-AD27F19B7703.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46186208D8ED30086C1C0 /* C32CD60E-FD66-393D-A52E-71FF74C36B06.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "C32CD60E-FD66-393D-A52E-71FF74C36B06.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46187208D8ED30086C1C0 /* Resolver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Resolver.framework; sourceTree = "<group>"; };
+		15A46188208D8ED30086C1C0 /* CFB3B8E6-7B06-3CF5-8FB3-1907B576A6F9.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CFB3B8E6-7B06-3CF5-8FB3-1907B576A6F9.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjack.framework; sourceTree = "<group>"; };
+		15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		15A4618B208D8ED30086C1C0 /* tun2socks.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = tun2socks.framework.dSYM; sourceTree = "<group>"; };
+		15A4618C208D8ED30086C1C0 /* 7F5048A6-2871-3B5D-A172-304EB9962E2C.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "7F5048A6-2871-3B5D-A172-304EB9962E2C.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4618D208D8ED30086C1C0 /* F26745ED-16AF-36BA-8BCA-30F47A560109.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "F26745ED-16AF-36BA-8BCA-30F47A560109.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4618E208D8ED30086C1C0 /* CD853F5C-A7A2-3A9E-94F9-489699E9517A.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CD853F5C-A7A2-3A9E-94F9-489699E9517A.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4618F208D8ED30086C1C0 /* BC03EA6B-A59B-3C47-A9D1-66EEE25CD243.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BC03EA6B-A59B-3C47-A9D1-66EEE25CD243.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46190208D8ED30086C1C0 /* 379F0694-E674-3992-9A26-1E215E09BDBD.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "379F0694-E674-3992-9A26-1E215E09BDBD.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46191208D8ED30086C1C0 /* CocoaLumberjack.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CocoaLumberjack.framework.dSYM; sourceTree = "<group>"; };
+		15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		15A46193208D8ED30086C1C0 /* lwip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = lwip.framework; sourceTree = "<group>"; };
+		15A46194208D8ED30086C1C0 /* lwip.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = lwip.framework.dSYM; sourceTree = "<group>"; };
+		15A46195208D8ED30086C1C0 /* 27E3D69E-0846-3BA4-8913-A15135F73A89.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "27E3D69E-0846-3BA4-8913-A15135F73A89.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46196208D8ED30086C1C0 /* Sodium.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sodium.framework; sourceTree = "<group>"; };
+		15A46197208D8ED30086C1C0 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		15A46198208D8ED30086C1C0 /* 18B9DCFF-196F-3400-BA8B-A055C8459669.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "18B9DCFF-196F-3400-BA8B-A055C8459669.bcsymbolmap"; sourceTree = "<group>"; };
+		15A46199208D8ED30086C1C0 /* E54E09D9-D78E-3582-B874-50A46A752010.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "E54E09D9-D78E-3582-B874-50A46A752010.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4619A208D8ED30086C1C0 /* ED4812B9-DC1F-303C-85D8-67F45B392CF8.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ED4812B9-DC1F-303C-85D8-67F45B392CF8.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4619B208D8ED30086C1C0 /* Yaml.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Yaml.framework; sourceTree = "<group>"; };
+		15A4619C208D8ED30086C1C0 /* MMDB.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = MMDB.framework.dSYM; sourceTree = "<group>"; };
+		15A4619D208D8ED30086C1C0 /* Yaml.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Yaml.framework.dSYM; sourceTree = "<group>"; };
+		15A4619E208D8ED30086C1C0 /* 234BF4B5-3352-37AA-8FB0-5CC316C272C3.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "234BF4B5-3352-37AA-8FB0-5CC316C272C3.bcsymbolmap"; sourceTree = "<group>"; };
+		15A4619F208D8ED30086C1C0 /* 773E6FF1-2FCE-3686-A4FE-A36C88D8FD21.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "773E6FF1-2FCE-3686-A4FE-A36C88D8FD21.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A0208D8ED30086C1C0 /* 7F5A51E6-EF61-34FD-B033-A359CC099F60.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "7F5A51E6-EF61-34FD-B033-A359CC099F60.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A1208D8ED30086C1C0 /* 824F9A3C-13C1-30C1-9421-B27F245C3552.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "824F9A3C-13C1-30C1-9421-B27F245C3552.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A2208D8ED30086C1C0 /* Disk.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Disk.framework.dSYM; sourceTree = "<group>"; };
+		15A461A3208D8ED30086C1C0 /* 678940AF-E202-3AF7-94A6-E6CFF7228095.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "678940AF-E202-3AF7-94A6-E6CFF7228095.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A4208D8ED30086C1C0 /* MMDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MMDB.framework; sourceTree = "<group>"; };
+		15A461A5208D8ED30086C1C0 /* Alamofire.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Alamofire.framework.dSYM; sourceTree = "<group>"; };
+		15A461A6208D8ED30086C1C0 /* 5CB21BF7-738D-3DE7-B602-B078FE33DC9E.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "5CB21BF7-738D-3DE7-B602-B078FE33DC9E.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A7208D8ED30086C1C0 /* 17901850-CA94-3511-896D-7169CFB6838A.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "17901850-CA94-3511-896D-7169CFB6838A.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461A8208D8ED30086C1C0 /* Disk.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Disk.framework; sourceTree = "<group>"; };
+		15A461A9208D8ED30086C1C0 /* C92A6803-9846-332C-88C0-A53B233D94B5.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "C92A6803-9846-332C-88C0-A53B233D94B5.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461AA208D8ED30086C1C0 /* 87753A85-0329-3F9E-ADB5-D93016CCFF7D.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "87753A85-0329-3F9E-ADB5-D93016CCFF7D.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461AB208D8ED30086C1C0 /* 524C57F3-E335-36DC-BC58-86EC13F67A8B.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "524C57F3-E335-36DC-BC58-86EC13F67A8B.bcsymbolmap"; sourceTree = "<group>"; };
+		15A461AC208D8ED30086C1C0 /* CocoaLumberjackSwift.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = CocoaLumberjackSwift.framework.dSYM; sourceTree = "<group>"; };
+		15A461AD208D8ED30086C1C0 /* .NEKit.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .NEKit.version; sourceTree = "<group>"; };
+		15A461AE208D8ED30086C1C0 /* .CocoaLumberjack.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .CocoaLumberjack.version; sourceTree = "<group>"; };
+		15A461AF208D8ED30086C1C0 /* .CocoaAsyncSocket.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .CocoaAsyncSocket.version; sourceTree = "<group>"; };
+		15A461B0208D8ED30086C1C0 /* .YamlSwift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .YamlSwift.version; sourceTree = "<group>"; };
+		15A461B1208D8ED30086C1C0 /* .MMDB-Swift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".MMDB-Swift.version"; sourceTree = "<group>"; };
 		15FF3945208C29620065BBA5 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyUITableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,6 +158,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */,
+				15A461B3208D94EC0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */,
+				15A461B4208D94EC0086C1C0 /* CocoaLumberjack.framework in Frameworks */,
+				15A461B5208D94EC0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */,
+				15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */,
+				15A461B7208D94EC0086C1C0 /* lwip.framework in Frameworks */,
+				15A461B8208D94EC0086C1C0 /* MMDB.framework in Frameworks */,
+				15A461B9208D94EC0086C1C0 /* NEKit.framework in Frameworks */,
+				15A461BA208D94EC0086C1C0 /* Resolver.framework in Frameworks */,
+				15A461BB208D94EC0086C1C0 /* Sodium.framework in Frameworks */,
+				15A461BC208D94EC0086C1C0 /* tun2socks.framework in Frameworks */,
+				15A461BD208D94EC0086C1C0 /* Yaml.framework in Frameworks */,
 				15479D6520897A5E005FE945 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -99,6 +190,7 @@
 		15479D6320897A5E005FE945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15A4616D208D8ED30086C1C0 /* Build */,
 				15479D6420897A5E005FE945 /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
@@ -141,6 +233,89 @@
 			path = discord;
 			sourceTree = "<group>";
 		};
+		15A4616D208D8ED30086C1C0 /* Build */ = {
+			isa = PBXGroup;
+			children = (
+				15A4616E208D8ED30086C1C0 /* .Sodium-framework.version */,
+				15A4616F208D8ED30086C1C0 /* .SwiftyJSON.version */,
+				15A46170208D8ED30086C1C0 /* .Alamofire.version */,
+				15A46171208D8ED30086C1C0 /* .Resolver.version */,
+				15A46172208D8ED30086C1C0 /* .tun2socks.version */,
+				15A46173208D8ED30086C1C0 /* .Disk.version */,
+				15A46174208D8ED30086C1C0 /* iOS */,
+				15A461AD208D8ED30086C1C0 /* .NEKit.version */,
+				15A461AE208D8ED30086C1C0 /* .CocoaLumberjack.version */,
+				15A461AF208D8ED30086C1C0 /* .CocoaAsyncSocket.version */,
+				15A461B0208D8ED30086C1C0 /* .YamlSwift.version */,
+				15A461B1208D8ED30086C1C0 /* .MMDB-Swift.version */,
+			);
+			name = Build;
+			path = Carthage/Build;
+			sourceTree = "<group>";
+		};
+		15A46174208D8ED30086C1C0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				15A46175208D8ED30086C1C0 /* SwiftyJSON.framework */,
+				15A46176208D8ED30086C1C0 /* B6798835-57A3-3004-8C93-D6CDD213BE34.bcsymbolmap */,
+				15A46177208D8ED30086C1C0 /* NEKit.framework */,
+				15A46178208D8ED30086C1C0 /* 8B574C96-1F18-361B-93C0-716AEFCF9A06.bcsymbolmap */,
+				15A46179208D8ED30086C1C0 /* 61E2A907-1309-3A42-9317-80092B741382.bcsymbolmap */,
+				15A4617A208D8ED30086C1C0 /* 04AF01DA-04AD-3B81-B3AF-40042B36CC0D.bcsymbolmap */,
+				15A4617B208D8ED30086C1C0 /* Resolver.framework.dSYM */,
+				15A4617C208D8ED30086C1C0 /* tun2socks.framework */,
+				15A4617D208D8ED30086C1C0 /* CocoaAsyncSocket.framework.dSYM */,
+				15A4617E208D8ED30086C1C0 /* A3599F73-6AD1-3E69-BA19-209372C10C25.bcsymbolmap */,
+				15A4617F208D8ED30086C1C0 /* Sodium.framework.dSYM */,
+				15A46180208D8ED30086C1C0 /* B558C55B-6D9E-3D34-865F-8F7853B9F1C3.bcsymbolmap */,
+				15A46181208D8ED30086C1C0 /* 3D01C946-C7C6-38B0-ADE0-5508370C30F4.bcsymbolmap */,
+				15A46182208D8ED30086C1C0 /* SwiftyJSON.framework.dSYM */,
+				15A46183208D8ED30086C1C0 /* 5A733B87-FFFB-3568-9813-6122EE77B853.bcsymbolmap */,
+				15A46184208D8ED30086C1C0 /* NEKit.framework.dSYM */,
+				15A46185208D8ED30086C1C0 /* ED092683-6960-3A50-896F-AD27F19B7703.bcsymbolmap */,
+				15A46186208D8ED30086C1C0 /* C32CD60E-FD66-393D-A52E-71FF74C36B06.bcsymbolmap */,
+				15A46187208D8ED30086C1C0 /* Resolver.framework */,
+				15A46188208D8ED30086C1C0 /* CFB3B8E6-7B06-3CF5-8FB3-1907B576A6F9.bcsymbolmap */,
+				15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */,
+				15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */,
+				15A4618B208D8ED30086C1C0 /* tun2socks.framework.dSYM */,
+				15A4618C208D8ED30086C1C0 /* 7F5048A6-2871-3B5D-A172-304EB9962E2C.bcsymbolmap */,
+				15A4618D208D8ED30086C1C0 /* F26745ED-16AF-36BA-8BCA-30F47A560109.bcsymbolmap */,
+				15A4618E208D8ED30086C1C0 /* CD853F5C-A7A2-3A9E-94F9-489699E9517A.bcsymbolmap */,
+				15A4618F208D8ED30086C1C0 /* BC03EA6B-A59B-3C47-A9D1-66EEE25CD243.bcsymbolmap */,
+				15A46190208D8ED30086C1C0 /* 379F0694-E674-3992-9A26-1E215E09BDBD.bcsymbolmap */,
+				15A46191208D8ED30086C1C0 /* CocoaLumberjack.framework.dSYM */,
+				15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */,
+				15A46193208D8ED30086C1C0 /* lwip.framework */,
+				15A46194208D8ED30086C1C0 /* lwip.framework.dSYM */,
+				15A46195208D8ED30086C1C0 /* 27E3D69E-0846-3BA4-8913-A15135F73A89.bcsymbolmap */,
+				15A46196208D8ED30086C1C0 /* Sodium.framework */,
+				15A46197208D8ED30086C1C0 /* Alamofire.framework */,
+				15A46198208D8ED30086C1C0 /* 18B9DCFF-196F-3400-BA8B-A055C8459669.bcsymbolmap */,
+				15A46199208D8ED30086C1C0 /* E54E09D9-D78E-3582-B874-50A46A752010.bcsymbolmap */,
+				15A4619A208D8ED30086C1C0 /* ED4812B9-DC1F-303C-85D8-67F45B392CF8.bcsymbolmap */,
+				15A4619B208D8ED30086C1C0 /* Yaml.framework */,
+				15A4619C208D8ED30086C1C0 /* MMDB.framework.dSYM */,
+				15A4619D208D8ED30086C1C0 /* Yaml.framework.dSYM */,
+				15A4619E208D8ED30086C1C0 /* 234BF4B5-3352-37AA-8FB0-5CC316C272C3.bcsymbolmap */,
+				15A4619F208D8ED30086C1C0 /* 773E6FF1-2FCE-3686-A4FE-A36C88D8FD21.bcsymbolmap */,
+				15A461A0208D8ED30086C1C0 /* 7F5A51E6-EF61-34FD-B033-A359CC099F60.bcsymbolmap */,
+				15A461A1208D8ED30086C1C0 /* 824F9A3C-13C1-30C1-9421-B27F245C3552.bcsymbolmap */,
+				15A461A2208D8ED30086C1C0 /* Disk.framework.dSYM */,
+				15A461A3208D8ED30086C1C0 /* 678940AF-E202-3AF7-94A6-E6CFF7228095.bcsymbolmap */,
+				15A461A4208D8ED30086C1C0 /* MMDB.framework */,
+				15A461A5208D8ED30086C1C0 /* Alamofire.framework.dSYM */,
+				15A461A6208D8ED30086C1C0 /* 5CB21BF7-738D-3DE7-B602-B078FE33DC9E.bcsymbolmap */,
+				15A461A7208D8ED30086C1C0 /* 17901850-CA94-3511-896D-7169CFB6838A.bcsymbolmap */,
+				15A461A8208D8ED30086C1C0 /* Disk.framework */,
+				15A461A9208D8ED30086C1C0 /* C92A6803-9846-332C-88C0-A53B233D94B5.bcsymbolmap */,
+				15A461AA208D8ED30086C1C0 /* 87753A85-0329-3F9E-ADB5-D93016CCFF7D.bcsymbolmap */,
+				15A461AB208D8ED30086C1C0 /* 524C57F3-E335-36DC-BC58-86EC13F67A8B.bcsymbolmap */,
+				15A461AC208D8ED30086C1C0 /* CocoaLumberjackSwift.framework.dSYM */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -169,6 +344,7 @@
 				1563B3C82089787C00095446 /* Frameworks */,
 				1563B3C92089787C00095446 /* Resources */,
 				15479D6120897A2C005FE945 /* Embed App Extensions */,
+				15A461BE208D953D0086C1C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -255,6 +431,46 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		15A461BE208D953D0086C1C0 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaAsyncSocket.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjackSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/lwip.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MMDB.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NEKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Resolver.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Sodium.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/tun2socks.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Yaml.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		15479D5120897A2C005FE945 /* Sources */ = {
@@ -470,6 +686,10 @@
 				CODE_SIGN_ENTITLEMENTS = discord/discord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L74U742E6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = discord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -491,6 +711,10 @@
 				CODE_SIGN_ENTITLEMENTS = discord/discord.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = L74U742E6Z;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = discord/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
