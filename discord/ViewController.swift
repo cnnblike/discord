@@ -12,6 +12,7 @@ import Disk
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData: [String] = ["Proxy 1","Proxy 2","Proxy 3"]
     var editEnabled: Bool = false
+    var hidden:[Bool] = [false, true]
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
@@ -60,8 +61,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func callbackFromOtherVC(){
         // process crud here
         print("Callback triggered")
+        // TODO: fix it, fake add here, only trigger the following add process when it's actually new rule
+        tableView.beginUpdates()
+        if(tableData.count == 0){
+            tableView.insertSections([1], with: .automatic)
+        }
+        tableData.append("Proxy x")
+        tableView.insertRows(at: [IndexPath(row: tableData.count - 1, section: 1)], with: .automatic)
+        tableView.endUpdates()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -78,9 +86,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
-    }
+
 
 }
 
@@ -88,6 +94,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 /// MARK: - UITableViewDelegate, UITableViewDataSource
 extension ViewController {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if tableData.count == 0 {
+            return 1
+        }
+        return 2
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
@@ -139,6 +153,9 @@ extension ViewController {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
                 print("Delete Action")
                 self.tableData.remove(at: indexPath.row)
+                if self.tableData.count == 0 {
+                    tableView.deleteSections([1], with: .fade)
+                }
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 // TODO: updateStored()
             }
