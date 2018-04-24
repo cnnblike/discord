@@ -10,9 +10,8 @@ import UIKit
 import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    var tableData: [String] = ["Proxy 1","Proxy 2","Proxy 3"]
     var editEnabled: Bool = false
-    var hidden:[Bool] = [false, true]
+    var enableCell: EnableUITableViewCell?
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
@@ -27,13 +26,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.performSegue(withIdentifier: "ShowDetailView", sender: "ViewController")
 
         })
-        alert.addAction(UIAlertAction(title: "Connect/Disconnect", style: .default, handler: { _ in
-            if VpnManager.shared.vpnStatus == .off {
-                VpnManager.shared.connect()
-            } else {
-                VpnManager.shared.disconnect()
-            }
-        }))
+
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel")
         })
@@ -49,12 +42,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.tableView.setEditing(false, animated: true)
         }
     }
+    
     override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailView"{
             let controller = segue.destination as! DetailViewController
             controller.itemString = sender as? String
         } else if segue.identifier == "ShowQRView" {
-            print("prepare for QR View")
         }
     }
     
@@ -63,17 +56,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("Callback triggered")
         // TODO: fix it, fake add here, only trigger the following add process when it's actually new rule
         tableView.beginUpdates()
-        if(tableData.count == 0){
+        if(VpnManager.shared.proxies.count == 0){
             tableView.insertSections([1], with: .automatic)
         }
-        tableData.append("Proxy x")
-        tableView.insertRows(at: [IndexPath(row: tableData.count - 1, section: 1)], with: .automatic)
+        VpnManager.shared.proxies.append(Proxy(name: "new proxy", host: "ss", port: 80, password: "5052", enable: true, description: "Some description"))
+        tableView.insertRows(at: [IndexPath(row: VpnManager.shared.proxies.count - 1, section: 1)], with: .automatic)
         tableView.endUpdates()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        VpnManager.shared.proxies = []
         // Do any additional setup after loading the view, typically from a nib.
         // TODO: Load stored data here
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "kProxyServiceVPNStatusNotification"), object: nil, queue: nil) { (x: Notification) in
+            if self.enableCell != nil {
+                self.enableCell?.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .connecting) || (VpnManager.shared.vpnStatus == .on)
+            }
+        }
         if Disk.exists("config.json", in: .applicationSupport) {
             print("exist, no need to create")
         } else {
@@ -81,13 +81,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-
 }
 
 
@@ -96,7 +98,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 extension ViewController {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if tableData.count == 0 {
+        if VpnManager.shared.proxies.count == 0 {
             return 1
         }
         return 2
@@ -106,20 +108,26 @@ extension ViewController {
         if section == 0 {
             return 2
         }
-        return tableData.count
+        return VpnManager.shared.proxies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "EnableCell", for: indexPath) as! EnableUITableViewCell
-                // TODO: add actual status here.
-                cell.enableSwitch.isOn = false
+                cell.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .on)
                 cell.switchCallback = { (switcher: UISwitch) -> Void in
                     print("enable switch clicked")
                     print(switcher.isOn)
+                    if switcher.isOn && (VpnManager.shared.vpnStatus == .off || VpnManager.shared.vpnStatus == .disconnecting) {
+                        VpnManager.shared.connect()
+                    }
+                    if (!switcher.isOn) && (VpnManager.shared.vpnStatus == .on || VpnManager.shared.vpnStatus == .connecting) {
+                        VpnManager.shared.disconnect()
+                    }
                     // TODO: add change here.
                 }
+                enableCell = cell
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
@@ -128,14 +136,15 @@ extension ViewController {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath) as! ProxyUITableViewCell
             // TODO: add actual status here
-            cell.nameLabel.text = tableData[indexPath.row]
-            cell.detailLabel.text = "detailLabel"
+            cell.proxy = VpnManager.shared.proxies[indexPath.row]
+            cell.nameLabel.text = cell.proxy.name
+            cell.detailLabel.text = cell.proxy.description
             cell.ruleImage.image = UIImage(named: "default")
-            cell.proxySwitch.isOn = false
+            cell.proxySwitch.isOn = cell.proxy.enable
             cell.switchCallback = { (switcher: UISwitch) -> Void in
-                print("proxy switch clicked")
-                print(indexPath, switcher.isOn)
-                // TODO: change it here
+                cell.proxy.enable = switcher.isOn
+                VpnManager.shared.disconnect()
+                // disconnect here so user have to update the proxy setting above.
             }
             return cell
         }
@@ -151,9 +160,8 @@ extension ViewController {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 1 {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
-                print("Delete Action")
-                self.tableData.remove(at: indexPath.row)
-                if self.tableData.count == 0 {
+                VpnManager.shared.proxies.remove(at: indexPath.row)
+                if VpnManager.shared.proxies.count == 0 {
                     tableView.deleteSections([1], with: .fade)
                 }
                 tableView.deleteRows(at: [indexPath], with: .fade)
@@ -179,10 +187,9 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         print(sourceIndexPath.row, destinationIndexPath.row)
-        var itemToMove = tableData[sourceIndexPath.row]
-        tableData.remove(at: sourceIndexPath.row)
-        tableData.insert(itemToMove, at: destinationIndexPath.row)
-        print(tableData)
+        let itemToMove = VpnManager.shared.proxies[sourceIndexPath.row]
+        VpnManager.shared.proxies.remove(at: sourceIndexPath.row)
+        VpnManager.shared.proxies.insert(itemToMove, at: destinationIndexPath.row)
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
@@ -194,7 +201,6 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section != 0) || (indexPath.row != 0) {
-            print(indexPath.row)
             tableView.deselectRow(at: indexPath, animated: true)
             // TODO: show a legal issue / About issue VC here
         }

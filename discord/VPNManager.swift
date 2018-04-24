@@ -23,7 +23,7 @@ enum VPNStatus {
 class VpnManager{
     static let shared = VpnManager()
     var observerAdded: Bool = false
-
+    var proxies: [Proxy] = []
     fileprivate(set) var vpnStatus = VPNStatus.off {
         didSet {
             NotificationCenter.default.post(name: Notification.Name(rawValue: "kProxyServiceVPNStatusNotification"), object: nil)
@@ -160,7 +160,7 @@ extension VpnManager{
 
     fileprivate func setRulerConfig(_ manager:NETunnelProviderManager){
         var conf = [String:AnyObject]()
-        conf["setting"] = Setting.shared as AnyObject?
+        conf["setting"] = String(data: try! JSONEncoder().encode(VpnManager.shared.proxies), encoding: .utf8) as AnyObject?
         let orignConf = manager.protocolConfiguration as! NETunnelProviderProtocol
         orignConf.providerConfiguration = conf
         manager.protocolConfiguration = orignConf

@@ -43,8 +43,8 @@
 		15A461C9208E6EBE0086C1C0 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4617C208D8ED30086C1C0 /* tun2socks.framework */; };
 		15A461CA208E6EBE0086C1C0 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4619B208D8ED30086C1C0 /* Yaml.framework */; };
 		15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461CC208EA73F0086C1C0 /* VPNManager.swift */; };
-		15A461D3208EBAF80086C1C0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Setting.swift */; };
-		15A461D4208EE25F0086C1C0 /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Setting.swift */; };
+		15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
+		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3945208C29620065BBA5 /* QRViewController.swift */; };
 		15FF3948208C4F220065BBA5 /* ProxyUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -157,7 +157,7 @@
 		15A461B0208D8ED30086C1C0 /* .YamlSwift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = .YamlSwift.version; sourceTree = "<group>"; };
 		15A461B1208D8ED30086C1C0 /* .MMDB-Swift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".MMDB-Swift.version"; sourceTree = "<group>"; };
 		15A461CC208EA73F0086C1C0 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
-		15A461D2208EBAF80086C1C0 /* Setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
+		15A461D2208EBAF80086C1C0 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
 		15FF3945208C29620065BBA5 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyUITableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -248,7 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				15A461CC208EA73F0086C1C0 /* VPNManager.swift */,
-				15A461D2208EBAF80086C1C0 /* Setting.swift */,
+				15A461D2208EBAF80086C1C0 /* Proxy.swift */,
 				15479D67208A7C27005FE945 /* DetailViewController.swift */,
 				15479D6220897A53005FE945 /* discord.entitlements */,
 				1563B3CE2089787C00095446 /* AppDelegate.swift */,
@@ -546,7 +546,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15A461D4208EE25F0086C1C0 /* Setting.swift in Sources */,
+				15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */,
 				15479D5820897A2C005FE945 /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,7 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15FF3948208C4F220065BBA5 /* ProxyUITableViewCell.swift in Sources */,
-				15A461D3208EBAF80086C1C0 /* Setting.swift in Sources */,
+				15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */,
 				15479D68208A7C27005FE945 /* DetailViewController.swift in Sources */,
 				15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */,
 				1563B3D12089787C00095446 /* ViewController.swift in Sources */,

@@ -11,6 +11,7 @@ import UIKit
 class ProxyUITableViewCell: UITableViewCell {
 
     var switchCallback: ((UISwitch) -> Void)?
+    var proxy: Proxy!
     @IBOutlet weak var ruleImage: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var detailLabel: UILabel!
