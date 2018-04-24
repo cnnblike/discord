@@ -11,7 +11,6 @@ import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData: [String] = ["Proxy 1","Proxy 2","Proxy 3"]
-
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
@@ -24,8 +23,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "Input Manually", style: .default) { _ in
             print("Input Manually")
             self.performSegue(withIdentifier: "ShowDetailView", sender: "ViewController")
+
         })
-        
+        alert.addAction(UIAlertAction(title: "Connect/Disconnect", style: .default, handler: { _ in
+            if VpnManager.shared.vpnStatus == .off {
+                VpnManager.shared.connect()
+            } else {
+                VpnManager.shared.disconnect()
+            }
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel")
         })
@@ -66,7 +72,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
+
+}
+
+
+
+/// MARK: - UITableViewDelegate, UITableViewDataSource
+extension ViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return 2
@@ -112,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
         return "Rules"
     }
-
+    
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 1 {
             let detailAction = UITableViewRowAction(style: .normal, title: "Detail") { (uiTableViewRowAction, indexPath) in
@@ -146,4 +158,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
 }
-
