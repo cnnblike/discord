@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,6 +23,11 @@
                                 <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem title="Proxy Based on Policy" id="wXy-iP-HXf">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="bmD-0W-AUb">
+                                            <connections>
+                                                <action selector="onEditButtonClicked:" destination="BYZ-38-t0r" id="0Yy-Eg-vs3"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="hnk-7M-Wre">
                                             <connections>
                                                 <action selector="onAddNewProxyButtonClicked:" destination="BYZ-38-t0r" id="gyz-yA-tfW"/>
@@ -47,7 +51,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-EV-X9I">
-                                                            <rect key="frame" x="20" y="13.666666666666664" width="52" height="21"/>
+                                                            <rect key="frame" x="15" y="13.666666666666664" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -64,7 +68,7 @@
                                                         <constraint firstItem="usO-i1-vr3" firstAttribute="centerY" secondItem="xOv-aH-V04" secondAttribute="centerY" id="Ota-y4-GM1"/>
                                                         <constraint firstItem="ta9-EV-X9I" firstAttribute="centerY" secondItem="xOv-aH-V04" secondAttribute="centerY" id="d5J-bp-ufX"/>
                                                         <constraint firstItem="usO-i1-vr3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ta9-EV-X9I" secondAttribute="trailing" constant="50" id="hZ9-4S-fj5"/>
-                                                        <constraint firstItem="ta9-EV-X9I" firstAttribute="leading" secondItem="xOv-aH-V04" secondAttribute="leadingMargin" id="iYr-fU-BxC"/>
+                                                        <constraint firstItem="ta9-EV-X9I" firstAttribute="leading" secondItem="xOv-aH-V04" secondAttribute="leading" constant="15" id="iYr-fU-BxC"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -99,7 +103,7 @@
                                                     </subviews>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProxyCell" rowHeight="64" id="uMT-6v-Qbm" customClass="ProxyUITableViewCell" customModule="discord" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="ProxyCell" rowHeight="64" id="uMT-6v-Qbm" customClass="ProxyUITableViewCell" customModule="discord" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="151.33333333333334" width="414" height="64"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uMT-6v-Qbm" id="uq1-n1-g0E">

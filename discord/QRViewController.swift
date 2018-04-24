@@ -76,7 +76,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             view.bringSubview(toFront: qrCodeFrameView)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

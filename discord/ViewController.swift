@@ -11,6 +11,7 @@ import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var tableData: [String] = ["Proxy 1","Proxy 2","Proxy 3"]
+    var editEnabled: Bool = false
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
@@ -35,10 +36,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
             print("Cancel")
         })
-        
+
         present(alert, animated: true)
     }
     
+    @IBAction func onEditButtonClicked(_ sender: UIBarButtonItem) {
+        editEnabled = !editEnabled
+        if editEnabled {
+            self.tableView.setEditing(true, animated: true)
+        } else {
+            self.tableView.setEditing(false, animated: true)
+        }
+    }
     override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ShowDetailView"{
             let controller = segue.destination as! DetailViewController
@@ -127,32 +136,48 @@ extension ViewController {
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 1 {
-            let detailAction = UITableViewRowAction(style: .normal, title: "Detail") { (uiTableViewRowAction, indexPath) in
-                print("Edit Action")
-                self.tableData[indexPath.row] = "updated" // TODO: change it to switch here.
-                tableView.reloadRows(at: [indexPath], with: .fade)
-                // TODO: updateStored()
-            }
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
                 print("Delete Action")
                 self.tableData.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
                 // TODO: updateStored()
             }
-            return [deleteAction, detailAction]
+            return [deleteAction]
         }
         return []
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0 {
+            return true
+        }
+        return false
+    }
+    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        if indexPath.section != 0{
+            return true
+        }
+        return false
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print(sourceIndexPath.row, destinationIndexPath.row)
+        var itemToMove = tableData[sourceIndexPath.row]
+        tableData.remove(at: sourceIndexPath.row)
+        tableData.insert(itemToMove, at: destinationIndexPath.row)
+        print(tableData)
+    }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        if (indexPath.section == 0) && (indexPath.row != 0) {
+        if (indexPath.section != 0) || (indexPath.row != 0) {
             return true
         }
         return false
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if (indexPath.section == 0) || (indexPath.row != 0) {
+        if (indexPath.section != 0) || (indexPath.row != 0) {
+            print(indexPath.row)
             tableView.deselectRow(at: indexPath, animated: true)
             // TODO: show a legal issue / About issue VC here
         }
