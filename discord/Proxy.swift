@@ -12,9 +12,10 @@ private let KUserDefaultsProxys: String = {
     return "github.com/cnnblike/decensorship.git"
 }()
 
-
 struct Proxy: Codable {
     var enable: Bool!
+    var pac: Bool!
+    var needAuthenticate: Bool!
     var name: String!
     var description: String!
     var host: String!

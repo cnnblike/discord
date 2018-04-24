@@ -11,17 +11,17 @@ import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var editEnabled: Bool = false
-    var enableCell: EnableUITableViewCell?
+    var enableCell: EnableUITableViewCell!
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "QR Code", style: .default) { _ in
-            self.performSegue(withIdentifier: "ShowQRView", sender: "ViewController")
+            self.performSegue(withIdentifier: "ShowQRView", sender: nil)
         })
         
         alert.addAction(UIAlertAction(title: "Input Manually", style: .default) { _ in
-            self.performSegue(withIdentifier: "ShowDetailView", sender: "ViewController")
+            self.performSegue(withIdentifier: "ShowDetailView", sender: nil)
         })
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
@@ -32,18 +32,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func onEditButtonClicked(_ sender: UIBarButtonItem) {
         editEnabled = !editEnabled
-        if editEnabled {
-            self.tableView.setEditing(true, animated: true)
-        } else {
-            self.tableView.setEditing(false, animated: true)
-        }
+        self.tableView.setEditing(editEnabled, animated: true)
     }
     
     override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowDetailView"{
-            let controller = segue.destination as! DetailViewController
-            controller.itemString = sender as? String
-        } else if segue.identifier == "ShowQRView" {
+        if sender == nil {
+            // we know it's just "Create" need.
+            if segue.identifier == "ShowDetailView"{
+                let controller = segue.destination as! DetailViewController
+                controller.proxy = Proxy(name: <#T##String#>, host: <#T##String#>, port: <#T##Int#>, password: <#T##String#>, enable: <#T##Bool#>, description: <#T##String#>) // so we just need a empty proxy
+            }
         }
     }
     
@@ -111,21 +109,17 @@ extension ViewController {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "EnableCell", for: indexPath) as! EnableUITableViewCell
-                cell.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .on)
-                cell.switchCallback = { (switcher: UISwitch) -> Void in
-                    print("enable switch clicked")
-                    print(switcher.isOn)
+                enableCell = tableView.dequeueReusableCell(withIdentifier: "EnableCell", for: indexPath) as! EnableUITableViewCell
+                enableCell.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .on)
+                enableCell.switchCallback = { (switcher: UISwitch) -> Void in
                     if switcher.isOn && (VpnManager.shared.vpnStatus == .off || VpnManager.shared.vpnStatus == .disconnecting) {
                         VpnManager.shared.connect()
                     }
                     if (!switcher.isOn) && (VpnManager.shared.vpnStatus == .on || VpnManager.shared.vpnStatus == .connecting) {
                         VpnManager.shared.disconnect()
                     }
-                    // TODO: add change here.
                 }
-                enableCell = cell
-                return cell
+                return enableCell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
                 return cell
@@ -148,10 +142,7 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0 {
-            return "Global"
-        }
-        return "Rules"
+        return section == 0 ? "Global" : "Rules"
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
@@ -171,16 +162,10 @@ extension ViewController {
     }
 
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section != 0 {
-            return true
-        }
-        return false
+        return indexPath.section != 0
     }
     func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        if indexPath.section != 0{
-            return true
-        }
-        return false
+        return indexPath.section != 0
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
@@ -200,7 +185,13 @@ extension ViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if (indexPath.section != 0) || (indexPath.row != 0) {
             tableView.deselectRow(at: indexPath, animated: true)
-            // TODO: show a legal issue / About issue VC here
+            if (indexPath.section == 0 ){
+                // TODO: show a legal issue / About issue VC here
+            } else {
+                // we are now handling the rules part. so we need to modify the items
+                performSegue(withIdentifier: "ShowDetailView", sender: indexPath)
+            }
         }
+        
     }
 }

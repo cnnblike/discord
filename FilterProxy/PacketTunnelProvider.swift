@@ -25,10 +25,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             exit(EXIT_FAILURE)
         }
         
-        let setting = conf["setting"] as! [Proxy]
+        let settings = conf["settings"] as! [Proxy]
 
         let httpAdapterFactory = HTTPAdapterFactory(serverHost: "10.0.0.112", serverPort: 8001, auth: nil)
-        // let directAdapterFactory = DirectAdapterFactory()
+        // let haf2 = HTTPAdapterFactory(serverHost:"test.cnnblike.com", serverPort: 8001, auth: nil)
         
         var UserRules:[NEKit.Rule] = []
         var _ : [NEKit.DomainListRule.MatchCriterion] = []
