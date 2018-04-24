@@ -17,18 +17,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "QR Code", style: .default) { _ in
-            print("QR Code")
             self.performSegue(withIdentifier: "ShowQRView", sender: "ViewController")
         })
         
         alert.addAction(UIAlertAction(title: "Input Manually", style: .default) { _ in
-            print("Input Manually")
             self.performSegue(withIdentifier: "ShowDetailView", sender: "ViewController")
-
         })
 
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            print("Cancel")
         })
 
         present(alert, animated: true)
@@ -55,6 +51,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // process crud here
         print("Callback triggered")
         // TODO: fix it, fake add here, only trigger the following add process when it's actually new rule
+        VpnManager.shared.disconnect()
         tableView.beginUpdates()
         if(VpnManager.shared.proxies.count == 0){
             tableView.insertSections([1], with: .automatic)
@@ -161,6 +158,7 @@ extension ViewController {
         if indexPath.section == 1 {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
                 VpnManager.shared.proxies.remove(at: indexPath.row)
+                VpnManager.shared.disconnect()
                 if VpnManager.shared.proxies.count == 0 {
                     tableView.deleteSections([1], with: .fade)
                 }
@@ -186,7 +184,7 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        print(sourceIndexPath.row, destinationIndexPath.row)
+        VpnManager.shared.disconnect()
         let itemToMove = VpnManager.shared.proxies[sourceIndexPath.row]
         VpnManager.shared.proxies.remove(at: sourceIndexPath.row)
         VpnManager.shared.proxies.insert(itemToMove, at: destinationIndexPath.row)

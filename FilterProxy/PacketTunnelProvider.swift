@@ -25,8 +25,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             exit(EXIT_FAILURE)
         }
         
-        let setting = conf["setting"] as! String
-        let proxies: [Proxy] = try! JSONDecoder().decode([Proxy].self, from: setting.data(using: .utf8)!)
+        let setting = conf["setting"] as! [Proxy]
 
         let httpAdapterFactory = HTTPAdapterFactory(serverHost: "10.0.0.112", serverPort: 8001, auth: nil)
         // let directAdapterFactory = DirectAdapterFactory()
