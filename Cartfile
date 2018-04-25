@@ -1,3 +1,2 @@
-github "zhuhaow/NEKit"
 github "Alamofire/Alamofire" ~> 4.7
 github "saoudrizwan/Disk"

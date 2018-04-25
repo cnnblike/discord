@@ -19,29 +19,7 @@
 		1563B3D62089787D00095446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D52089787D00095446 /* Assets.xcassets */; };
 		1563B3D92089787D00095446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D72089787D00095446 /* LaunchScreen.storyboard */; };
 		15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46197208D8ED30086C1C0 /* Alamofire.framework */; };
-		15A461B3208D94EC0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */; };
-		15A461B4208D94EC0086C1C0 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */; };
-		15A461B5208D94EC0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */; };
 		15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A8208D8ED30086C1C0 /* Disk.framework */; };
-		15A461B7208D94EC0086C1C0 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46193208D8ED30086C1C0 /* lwip.framework */; };
-		15A461B8208D94EC0086C1C0 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A4208D8ED30086C1C0 /* MMDB.framework */; };
-		15A461B9208D94EC0086C1C0 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46177208D8ED30086C1C0 /* NEKit.framework */; };
-		15A461BA208D94EC0086C1C0 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46187208D8ED30086C1C0 /* Resolver.framework */; };
-		15A461BB208D94EC0086C1C0 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46196208D8ED30086C1C0 /* Sodium.framework */; };
-		15A461BC208D94EC0086C1C0 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4617C208D8ED30086C1C0 /* tun2socks.framework */; };
-		15A461BD208D94EC0086C1C0 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4619B208D8ED30086C1C0 /* Yaml.framework */; };
-		15A461BF208E6EBE0086C1C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46197208D8ED30086C1C0 /* Alamofire.framework */; };
-		15A461C0208E6EBE0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */; };
-		15A461C1208E6EBE0086C1C0 /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */; };
-		15A461C2208E6EBE0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */; };
-		15A461C3208E6EBE0086C1C0 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A8208D8ED30086C1C0 /* Disk.framework */; };
-		15A461C4208E6EBE0086C1C0 /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46193208D8ED30086C1C0 /* lwip.framework */; };
-		15A461C5208E6EBE0086C1C0 /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A4208D8ED30086C1C0 /* MMDB.framework */; };
-		15A461C6208E6EBE0086C1C0 /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46177208D8ED30086C1C0 /* NEKit.framework */; };
-		15A461C7208E6EBE0086C1C0 /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46187208D8ED30086C1C0 /* Resolver.framework */; };
-		15A461C8208E6EBE0086C1C0 /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46196208D8ED30086C1C0 /* Sodium.framework */; };
-		15A461C9208E6EBE0086C1C0 /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4617C208D8ED30086C1C0 /* tun2socks.framework */; };
-		15A461CA208E6EBE0086C1C0 /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4619B208D8ED30086C1C0 /* Yaml.framework */; };
 		15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461CC208EA73F0086C1C0 /* VPNManager.swift */; };
 		15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
@@ -167,18 +145,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15A461BF208E6EBE0086C1C0 /* Alamofire.framework in Frameworks */,
-				15A461C0208E6EBE0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */,
-				15A461C1208E6EBE0086C1C0 /* CocoaLumberjack.framework in Frameworks */,
-				15A461C2208E6EBE0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */,
-				15A461C3208E6EBE0086C1C0 /* Disk.framework in Frameworks */,
-				15A461C4208E6EBE0086C1C0 /* lwip.framework in Frameworks */,
-				15A461C5208E6EBE0086C1C0 /* MMDB.framework in Frameworks */,
-				15A461C6208E6EBE0086C1C0 /* NEKit.framework in Frameworks */,
-				15A461C7208E6EBE0086C1C0 /* Resolver.framework in Frameworks */,
-				15A461C8208E6EBE0086C1C0 /* Sodium.framework in Frameworks */,
-				15A461C9208E6EBE0086C1C0 /* tun2socks.framework in Frameworks */,
-				15A461CA208E6EBE0086C1C0 /* Yaml.framework in Frameworks */,
 				15479D6620897A69005FE945 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -188,17 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */,
-				15A461B3208D94EC0086C1C0 /* CocoaAsyncSocket.framework in Frameworks */,
-				15A461B4208D94EC0086C1C0 /* CocoaLumberjack.framework in Frameworks */,
-				15A461B5208D94EC0086C1C0 /* CocoaLumberjackSwift.framework in Frameworks */,
 				15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */,
-				15A461B7208D94EC0086C1C0 /* lwip.framework in Frameworks */,
-				15A461B8208D94EC0086C1C0 /* MMDB.framework in Frameworks */,
-				15A461B9208D94EC0086C1C0 /* NEKit.framework in Frameworks */,
-				15A461BA208D94EC0086C1C0 /* Resolver.framework in Frameworks */,
-				15A461BB208D94EC0086C1C0 /* Sodium.framework in Frameworks */,
-				15A461BC208D94EC0086C1C0 /* tun2socks.framework in Frameworks */,
-				15A461BD208D94EC0086C1C0 /* Yaml.framework in Frameworks */,
 				15479D6520897A5E005FE945 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -357,7 +313,6 @@
 				15479D5120897A2C005FE945 /* Sources */,
 				15479D5220897A2C005FE945 /* Frameworks */,
 				15479D5320897A2C005FE945 /* Resources */,
-				15A461CB208E6F1C0086C1C0 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -472,68 +427,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
 			);
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaAsyncSocket.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjackSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/lwip.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MMDB.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NEKit.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Resolver.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Sodium.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/tun2socks.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Yaml.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-		15A461CB208E6F1C0086C1C0 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
-			);
-			outputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaAsyncSocket.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjackSwift.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/lwip.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MMDB.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NEKit.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Resolver.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Sodium.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/tun2socks.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Yaml.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
