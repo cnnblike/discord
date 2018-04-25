@@ -40,7 +40,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             // we know it's just "Create" need.
             if segue.identifier == "ShowDetailView"{
                 let controller = segue.destination as! DetailViewController
-                controller.proxy = Proxy(name: <#T##String#>, host: <#T##String#>, port: <#T##Int#>, password: <#T##String#>, enable: <#T##Bool#>, description: <#T##String#>) // so we just need a empty proxy
+                controller.proxy = Proxy()
+                //controller.proxy = Proxy(name: <#T##String#>, host: <#T##String#>, port: <#T##Int#>, password: <#T##String#>, enable: <#T##Bool#>, description: <#T##String#>) // so we just need a empty proxy
             }
         }
     }
@@ -54,7 +55,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if(VpnManager.shared.proxies.count == 0){
             tableView.insertSections([1], with: .automatic)
         }
-        VpnManager.shared.proxies.append(Proxy(name: "new proxy", host: "ss", port: 80, password: "5052", enable: true, description: "Some description"))
+//        VpnManager.shared.proxies.append(Proxy(name: "new proxy", host: "ss", port: 80, password: "5052", enable: true, description: "Some description"))
         tableView.insertRows(at: [IndexPath(row: VpnManager.shared.proxies.count - 1, section: 1)], with: .automatic)
         tableView.endUpdates()
     }

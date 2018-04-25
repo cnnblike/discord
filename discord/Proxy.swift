@@ -14,16 +14,38 @@ private let KUserDefaultsProxys: String = {
 
 struct Proxy: Codable {
     var enable: Bool!
-    var pac: Bool!
+    var isAutomatic: Bool!
     var needAuthenticate: Bool!
-    var name: String!
-    var description: String!
+    var username: String!
     var host: String!
     var port: Int!
     var password: String!
-    // TODO: add rules and pac here.
+    var pacUrl: String!
     
-    init(name: String, host: String, port: Int, password: String, enable: Bool, description: String) {
+    var name: String!
+    var description: String!
+    var imageUrl: String!
+    
+    var cachedImage: String!
+    var pacContent: String!
+    
+    init(){
+        self.enable = false
+        self.isAutomatic = false
+        self.needAuthenticate = false
+        self.username = ""
+        self.host = ""
+        self.port = 0
+        self.password = ""
+        self.pacUrl = ""
+        self.name = ""
+        self.description = ""
+        self.imageUrl = ""
+        self.cachedImage = ""
+        self.pacContent = ""
+        
+    }
+    init(name: String, host: String, port: Int, password: String, enable: Bool, description: String, username: String) {
         self.name = name
         self.host = host
         self.port = port
