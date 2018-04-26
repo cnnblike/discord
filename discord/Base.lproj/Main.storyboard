@@ -202,7 +202,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69.599999999999994" y="417.8410794602699"/>
+            <point key="canvasLocation" x="64" y="603"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="WdG-r1-0T3">
@@ -230,7 +230,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ksV-wB-w8v">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" delaysContentTouches="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="ksV-wB-w8v">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
@@ -309,18 +309,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFD-Ve-kzO">
-                                                    <rect key="frame" x="111.66666666666666" y="13.666666666666664" width="282.33333333333337" height="17"/>
+                                                    <rect key="frame" x="81.666666666666657" y="13.666666666666664" width="312.33333333333337" height="17"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
-                                                        <action selector="textFieldEditingEnded:" destination="Mfw-qc-t7P" eventType="editingDidEnd" id="c38-Em-pc8"/>
+                                                        <action selector="textFieldEditingChanged:" destination="Mfw-qc-t7P" eventType="editingChanged" id="CxZ-oj-qqH"/>
+                                                        <outlet property="delegate" destination="Mfw-qc-t7P" id="8vW-BS-Ucm"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="Dbh-De-PZe" firstAttribute="centerY" secondItem="elK-FL-8w3" secondAttribute="centerY" id="2Ld-VN-gCj"/>
-                                                <constraint firstItem="IFD-Ve-kzO" firstAttribute="leading" secondItem="Dbh-De-PZe" secondAttribute="trailing" constant="50" id="4Iv-Rg-GQQ"/>
+                                                <constraint firstItem="IFD-Ve-kzO" firstAttribute="leading" secondItem="Dbh-De-PZe" secondAttribute="trailing" constant="20" id="4Iv-Rg-GQQ"/>
                                                 <constraint firstItem="IFD-Ve-kzO" firstAttribute="centerY" secondItem="elK-FL-8w3" secondAttribute="centerY" id="4W9-Nn-eyz"/>
                                                 <constraint firstItem="Dbh-De-PZe" firstAttribute="leading" secondItem="elK-FL-8w3" secondAttribute="leading" constant="20" id="HUq-rP-3JE"/>
                                                 <constraint firstAttribute="trailing" secondItem="IFD-Ve-kzO" secondAttribute="trailing" constant="20" id="iYj-2k-Aka"/>
@@ -350,6 +351,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="eVj-CR-lUm"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="ksV-wB-w8v" id="bTB-m9-uBh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JwN-wA-lyQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -405,7 +409,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kT8-3F-b6l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="838" y="813"/>
+            <point key="canvasLocation" x="838" y="1072"/>
         </scene>
     </scenes>
     <resources>

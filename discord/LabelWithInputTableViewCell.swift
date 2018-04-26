@@ -8,13 +8,15 @@
 
 import UIKit
 
-class LabelWithInputTableViewCell: UITableViewCell {
+class LabelWithInputTableViewCell: UITableViewCell, UITextFieldDelegate {
     
     var textFieldCallback: ((UITextField) -> Void)?
     @IBOutlet weak var textField: UITextField!
-    @IBAction func textFieldEditingEnded(_ sender: UITextField) {
+    @IBAction func textFieldEditingChanged(_ sender: UITextField) {
         textFieldCallback?(sender)
+
     }
+
     @IBOutlet weak var hintLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,5 +28,13 @@ class LabelWithInputTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.endEditing(false)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textFieldCallback?(textField)
+        return true
+    }
 }

@@ -37,27 +37,42 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func prepare(for segue:UIStoryboardSegue, sender: Any?) {
         if sender == nil {
-            // we know it's just "Create" need.
+            // we know it's just "Create".
             if segue.identifier == "ShowDetailView"{
                 let controller = segue.destination as! DetailViewController
-                controller.proxy = Proxy()
-                //controller.proxy = Proxy(name: <#T##String#>, host: <#T##String#>, port: <#T##Int#>, password: <#T##String#>, enable: <#T##Bool#>, description: <#T##String#>) // so we just need a empty proxy
+                controller.proxy = Proxy() // so we just need a empty proxy
+                controller.index = VpnManager.shared.proxies.count
+            } else if segue.identifier == "ShowQRView"{
+                let controller = segue.destination as! QRViewController
+                controller.index = VpnManager.shared.proxies.count
             }
+        } else {
+            // it's update
+            let controller = segue.destination as! DetailViewController
+            let row = (sender as! IndexPath).row
+            controller.proxy = VpnManager.shared.proxies[row]
+            controller.index = row
         }
     }
     
-    func callbackFromOtherVC(){
+    func callbackFromOtherVC(index: Int, item: Proxy){
         // process crud here
+        VpnManager.shared.disconnect()
         print("Callback triggered")
         // TODO: fix it, fake add here, only trigger the following add process when it's actually new rule
-        VpnManager.shared.disconnect()
-        tableView.beginUpdates()
-        if(VpnManager.shared.proxies.count == 0){
-            tableView.insertSections([1], with: .automatic)
+        if index == VpnManager.shared.proxies.count {
+            // insert here
+            tableView.beginUpdates()
+            if(VpnManager.shared.proxies.count == 0){
+                tableView.insertSections([1], with: .automatic)
+            }
+            VpnManager.shared.proxies.append(item)
+            tableView.insertRows(at: [IndexPath(row: VpnManager.shared.proxies.count - 1, section: 1)], with: .automatic)
+            tableView.endUpdates()
+        } else {
+            VpnManager.shared.proxies[index] = item
+            tableView.reloadData()
         }
-//        VpnManager.shared.proxies.append(Proxy(name: "new proxy", host: "ss", port: 80, password: "5052", enable: true, description: "Some description"))
-        tableView.insertRows(at: [IndexPath(row: VpnManager.shared.proxies.count - 1, section: 1)], with: .automatic)
-        tableView.endUpdates()
     }
     
     override func viewDidLoad() {
@@ -94,17 +109,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 extension ViewController {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        if VpnManager.shared.proxies.count == 0 {
-            return 1
-        }
-        return 2
+        return VpnManager.shared.proxies.count == 0 ? 1 : 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
-            return 2
-        }
-        return VpnManager.shared.proxies.count
+        return section == 0 ? 2 : VpnManager.shared.proxies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -193,6 +202,5 @@ extension ViewController {
                 performSegue(withIdentifier: "ShowDetailView", sender: indexPath)
             }
         }
-        
     }
 }

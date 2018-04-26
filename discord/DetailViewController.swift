@@ -10,7 +10,11 @@ import UIKit
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var proxy: Proxy!
-    var itemString: String?
+    var index: Int!
+    var initialTVHeight: CGFloat!
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBAction func onBackButtonClicked(_ sender: Any) {
         if let _ = self.presentingViewController {
             // simply discard any change
@@ -23,18 +27,36 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let _ = self.presentingViewController {
             if let tempViewController = self.presentingViewController as? ViewController {
                 // pass back change from here.
-                tempViewController.callbackFromOtherVC()
+                tempViewController.callbackFromOtherVC(index: self.index, item: self.proxy)
             }
             self.presentingViewController!.dismiss(animated: true, completion: nil)
         }
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-        if let itemStringExists = itemString {
-            print(itemStringExists)
-        }
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver( self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver( self, selector: #selector(adjustForKeyboard), name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
+    }
+    
+    @objc func adjustForKeyboard( notification:Notification ) {
+        // ref: https://www.hackingwithswift.com/example-code/uikit/how-to-adjust-a-uiscrollview-to-fit-the-keyboard
+        let userInfo = notification.userInfo!
+        let keyboardScreenEndFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: view.window)
+        if notification.name == Notification.Name.UIKeyboardWillHide {
+            self.tableView.contentInset = UIEdgeInsets.zero
+        } else {
+            self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardViewEndFrame.height + 15.0, right: 0)
+            // TODO: 15.0 here is a magic number, just enough to make sure the editing line isn't too close to the keyboard, providing some extra space for reading
+        }
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.UIKeyboardWillChangeFrame, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,6 +87,14 @@ extension DetailViewController {
         return section == 0 ? 5 : 6
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true)
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return section == 0 ? "CONFIG" : "NETWORK"
+    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             if indexPath.row == 0 {
@@ -141,8 +171,10 @@ extension DetailViewController {
                 cell.textFieldCallback = { (textField: UITextField) -> Void in
                     if let number = Int(textField.text!) {
                         self.proxy.port = number
+                        textField.text = String(number)
                     } else {
                         self.proxy.port = 0
+                        textField.text = "0"
                     }
                 }
                 cell.hintLabel.text = "Port"

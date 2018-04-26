@@ -22,7 +22,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             exit(EXIT_FAILURE)
         }
         
-        //let settings = conf["settings"] as! [Proxy]
+        let settings = conf["settings"] as! [Proxy]
 
         // the `tunnelRemoteAddress` is meaningless because we are not creating a tunnel.
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "8.8.8.8")

@@ -11,13 +11,11 @@ import AVFoundation
 
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
+    var index: Int!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBAction func onBackButtonClicked(_ sender: Any) {
         if let _ = self.presentingViewController {
-            if let tempViewController = self.presentingViewController as? ViewController {
-                tempViewController.callbackFromOtherVC()
-            }
             self.presentingViewController!.dismiss(animated: true, completion: nil)
         }
     }
@@ -106,6 +104,9 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                 print(metadataObj.stringValue!)
                 messageLabel.text = metadataObj.stringValue
             }
+            /*if let tempViewController = self.presentingViewController as? ViewController {
+                tempViewController.callbackFromOtherVC()
+            }*/
         }
     }
 
