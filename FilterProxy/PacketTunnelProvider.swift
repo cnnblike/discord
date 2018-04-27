@@ -37,14 +37,13 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     capsule = "(function(){ \(String(setting.pacContent)); return FindProxyForURL })() "
                 } else {
                     if setting.needAuthenticate {
-                        capsule = "function() { return \"PROXY 127.0.0.1:\(String(proxyPort)); DIRECT\" }"
-                        enableLocalProxy = true
+                        capsule = "(function() { return function(){ return \"PROXY 127.0.0.1:\(String(self.proxyPort)); DIRECT\" }})()"
+                        self.enableLocalProxy = true
                         let httpAdapterFactory = HTTPAdapterFactory(serverHost: setting.host, serverPort: setting.port, auth: HTTPAuthentication(username: setting.username, password: setting.password))
                         let allRule = AllRule(adapterFactory: httpAdapterFactory)
                         RuleManager.currentManager = RuleManager(fromRules: [allRule], appendDirect: true)
-                        RawSocketFactory.TunnelProvider = self
                     } else {
-                        capsule = "function() { return \"PROXY \(String(setting.host)):\(String(setting.port)); DIRECT\" }"
+                        capsule = "(function() { return function(){ return \"PROXY \(String(setting.host)):\(String(setting.port)); DIRECT\" }})()"
                     }
                     capsules.append(capsule)
                     break
