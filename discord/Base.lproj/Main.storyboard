@@ -131,12 +131,12 @@
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tt8-uD-0Du" secondAttribute="trailing" constant="20" id="JcI-jW-OAc"/>
                                                                 <constraint firstItem="tt8-uD-0Du" firstAttribute="leading" secondItem="ukL-MB-Vel" secondAttribute="leading" constant="2" id="aO1-qK-GF3"/>
+                                                                <constraint firstItem="SFX-G1-AKm" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ukL-MB-Vel" secondAttribute="trailing" priority="500" id="cnM-D8-thc"/>
                                                                 <constraint firstAttribute="bottom" secondItem="tt8-uD-0Du" secondAttribute="bottom" id="dPT-N4-XG3"/>
                                                                 <constraint firstItem="SFX-G1-AKm" firstAttribute="top" secondItem="ukL-MB-Vel" secondAttribute="top" id="nhM-7Z-sB7"/>
+                                                                <constraint firstItem="tt8-uD-0Du" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="ukL-MB-Vel" secondAttribute="trailing" priority="500" id="o0o-61-0Xe"/>
                                                                 <constraint firstItem="SFX-G1-AKm" firstAttribute="leading" secondItem="ukL-MB-Vel" secondAttribute="leading" constant="2" id="rAA-Wy-OnO"/>
-                                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="SFX-G1-AKm" secondAttribute="trailing" constant="50" id="uAE-s6-wHh"/>
                                                             </constraints>
                                                         </view>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-Du-X6v">

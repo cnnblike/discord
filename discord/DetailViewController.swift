@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     var proxy: Proxy!
@@ -25,12 +26,44 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBAction func onSaveButtonClicked(_ sender: UIBarButtonItem) {
         print(self.proxy)
         if let _ = self.presentingViewController {
-            if let tempViewController = self.presentingViewController as? ViewController {
-                // pass back change from here.
-                tempViewController.callbackFromOtherVC(index: self.index, item: self.proxy)
+            let activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+            activityView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+            activityView.center = self.view.center
+            activityView.startAnimating()
+            self.view.addSubview(activityView)
+            self.view.isUserInteractionEnabled = false
+            // download image and pac file -> and process here.
+            validateAndDownload(item: self.proxy) { res in
+                self.tableView.reloadData()
+                self.view.isUserInteractionEnabled = true
+                self.view.willRemoveSubview(activityView)
+                activityView.stopAnimating()
+                switch res {
+                case .warning:
+                    // since we know warning won't be a problem of usage, we just alert user and told them the pac image isn't working well and go on.
+                    let alert = UIAlertController(title: "Opps, something went wrong", message: "but that won't affect your use", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                        self.goback()
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                case .ok:
+                    self.goback()
+                case .error:
+                    let alert = UIAlertController(title: "Opps, something went wrong", message: "check your input please", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                    }))
+                    self.present(alert, animated: true, completion: nil)
+                }
             }
-            self.presentingViewController!.dismiss(animated: true, completion: nil)
         }
+    }
+    
+    func goback(){
+        if let tempViewController = self.presentingViewController as? ViewController {
+            // pass back change from here.
+            tempViewController.callbackFromOtherVC(index: self.index, item: self.proxy)
+        }
+        self.presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -110,10 +143,10 @@ extension DetailViewController {
                 // description for proxy
                 let cell = tableView.dequeueReusableCell(withIdentifier: "LabelCell", for: indexPath) as! LabelWithInputTableViewCell
                 cell.textFieldCallback = {(textField: UITextField) -> Void in
-                    self.proxy.description = textField.text
+                    self.proxy.descriptor = textField.text
                 }
                 cell.hintLabel.text = "Description"
-                cell.textField.text = proxy.description
+                cell.textField.text = proxy.descriptor
                 return cell
             } else if indexPath.row == 2 {
                 // image url for proxy
@@ -151,6 +184,7 @@ extension DetailViewController {
                     self.proxy.pacUrl = textField.text
                 }
                 cell.hintLabel.text = "PAC URL"
+                cell.textField.text = self.proxy.pacUrl
                 cell.textField.isEnabled = proxy.isAutomatic
                 cell.hintLabel.isEnabled = proxy.isAutomatic
                 return cell

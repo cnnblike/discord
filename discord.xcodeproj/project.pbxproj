@@ -26,6 +26,8 @@
 		15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461CC208EA73F0086C1C0 /* VPNManager.swift */; };
 		15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
+		15E743292092A3A7007FE07B /* ValidateAndDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E743282092A3A7007FE07B /* ValidateAndDownload.swift */; };
+		15E7432B2092E4F0007FE07B /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E7432A2092E4F0007FE07B /* AlamofireImage.framework */; };
 		15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3945208C29620065BBA5 /* QRViewController.swift */; };
 		15FF3948208C4F220065BBA5 /* ProxyUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -142,6 +144,8 @@
 		15A461B1208D8ED30086C1C0 /* .MMDB-Swift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".MMDB-Swift.version"; sourceTree = "<group>"; };
 		15A461CC208EA73F0086C1C0 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		15A461D2208EBAF80086C1C0 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
+		15E743282092A3A7007FE07B /* ValidateAndDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateAndDownload.swift; sourceTree = "<group>"; };
+		15E7432A2092E4F0007FE07B /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		15FF3945208C29620065BBA5 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
 		15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProxyUITableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +163,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E7432B2092E4F0007FE07B /* AlamofireImage.framework in Frameworks */,
 				15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */,
 				15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */,
 				15479D6520897A5E005FE945 /* NetworkExtension.framework in Frameworks */,
@@ -181,6 +186,7 @@
 		15479D6320897A5E005FE945 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				15E7432A2092E4F0007FE07B /* AlamofireImage.framework */,
 				15A4616D208D8ED30086C1C0 /* Build */,
 				15479D6420897A5E005FE945 /* NetworkExtension.framework */,
 			);
@@ -212,6 +218,7 @@
 				15A461CC208EA73F0086C1C0 /* VPNManager.swift */,
 				15A461D2208EBAF80086C1C0 /* Proxy.swift */,
 				15479D67208A7C27005FE945 /* DetailViewController.swift */,
+				15E743282092A3A7007FE07B /* ValidateAndDownload.swift */,
 				15479D6220897A53005FE945 /* discord.entitlements */,
 				1563B3CE2089787C00095446 /* AppDelegate.swift */,
 				1563B3D02089787C00095446 /* ViewController.swift */,
@@ -340,7 +347,7 @@
 				1563B3C82089787C00095446 /* Frameworks */,
 				1563B3C92089787C00095446 /* Resources */,
 				15479D6120897A2C005FE945 /* Embed App Extensions */,
-				15A461BE208D953D0086C1C0 /* ShellScript */,
+				15A461BE208D953D0086C1C0 /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -429,7 +436,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		15A461BE208D953D0086C1C0 /* ShellScript */ = {
+		15A461BE208D953D0086C1C0 /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -437,10 +444,13 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
+			name = "Run Script";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -471,6 +481,7 @@
 				1563B3D12089787C00095446 /* ViewController.swift in Sources */,
 				1563B3CF2089787C00095446 /* AppDelegate.swift in Sources */,
 				1507571A2090C0BC009D9545 /* AutomaticOrManualUITableViewCell.swift in Sources */,
+				15E743292092A3A7007FE07B /* ValidateAndDownload.swift in Sources */,
 				1532B5EA208D370A00402772 /* EnableUITableViewCell.swift in Sources */,
 				15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */,
 			);

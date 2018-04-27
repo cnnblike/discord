@@ -12,7 +12,7 @@ private let KUserDefaultsProxys: String = {
     return "github.com/cnnblike/decensorship.git"
 }()
 
-struct Proxy: Codable {
+class Proxy: NSObject {
     var enable: Bool!
     var isAutomatic: Bool!
     var needAuthenticate: Bool!
@@ -23,34 +23,36 @@ struct Proxy: Codable {
     var pacUrl: String!
     
     var name: String!
-    var description: String!
+    var descriptor: String!
     var imageUrl: String!
     
     var cachedImage: String!
     var pacContent: String!
     
-    init(){
+    override init(){
+        super.init()
         self.enable = false
-        self.isAutomatic = false
+        self.isAutomatic = true
         self.needAuthenticate = false
         self.username = ""
         self.host = ""
         self.port = 0
         self.password = ""
-        self.pacUrl = ""
+        self.pacUrl = "http://discord.cnnblike.com:3000/WSGun.pac"
         self.name = ""
-        self.description = ""
-        self.imageUrl = ""
+        self.descriptor = ""
+        self.imageUrl = "https://cdn4.iconfinder.com/data/icons/48x48-free-object-icons/48/Butterfly.png"
         self.cachedImage = ""
         self.pacContent = ""
         
     }
     init(name: String, host: String, port: Int, password: String, enable: Bool, description: String, username: String) {
+        super.init()
         self.name = name
         self.host = host
         self.port = port
         self.password = password
         self.enable = enable
-        self.description = description
+        self.descriptor = description
     }
 }

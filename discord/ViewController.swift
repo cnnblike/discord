@@ -85,11 +85,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.enableCell?.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .connecting) || (VpnManager.shared.vpnStatus == .on)
             }
         }
-        if Disk.exists("config.json", in: .applicationSupport) {
-            print("exist, no need to create")
-        } else {
-            print("create file")
-        }
     }
 
     deinit {
@@ -139,8 +134,14 @@ extension ViewController {
             // TODO: add actual status here
             cell.proxy = VpnManager.shared.proxies[indexPath.row]
             cell.nameLabel.text = cell.proxy.name
-            cell.detailLabel.text = cell.proxy.description
-            cell.ruleImage.image = UIImage(named: "default")
+            cell.detailLabel.text = cell.proxy.descriptor
+            let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let filePath = documentsURL.appendingPathComponent(cell.proxy.cachedImage).path
+            if cell.proxy.cachedImage != "" && FileManager.default.fileExists(atPath: filePath) {
+                cell.ruleImage.image = UIImage(contentsOfFile: filePath)
+            } else {
+                cell.ruleImage.image = UIImage(named: "default")
+            }
             cell.proxySwitch.isOn = cell.proxy.enable
             cell.switchCallback = { (switcher: UISwitch) -> Void in
                 cell.proxy.enable = switcher.isOn
