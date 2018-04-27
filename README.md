@@ -10,6 +10,7 @@ carthage update --no-use-binaries --platform ios
 
 pacfile merge
 i18n
+a better logo
 
 3. TODO(Long-Term):
 

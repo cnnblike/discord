@@ -38,7 +38,9 @@ func validateAndDownload (item: Proxy, callback: @escaping (_ res:result)->()) -
     if item.descriptor == "" {
         item.descriptor = item.isAutomatic ? item.pacUrl: (item.host + ":" + String(item.port))
     }
-    if (item.port > 65535) || (item.port < 0) {
+    if (!item.isAutomatic) && (item.host == "") {
+        callback(.error)
+    } else if (item.port > 65535) || (item.port < 0) {
         callback(.error)
     } else {
         // pacUrl -> pacContent
