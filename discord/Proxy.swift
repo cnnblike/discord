@@ -61,10 +61,45 @@ class Proxy: NSObject, NSCoding, Codable {
         self.imageUrl = imageUrl
         self.cachedImage = cachedImage
         self.pacContent = pacContent
-        print(self)
     }
-    required convenience init(coder aDecoder: NSCoder){
-        self.init(enable: aDecoder.decodeObject(forKey: "enable") as! Bool, isAutomatic: aDecoder.decodeObject(forKey: "isAutomatic") as! Bool, needAuthenticate: aDecoder.decodeObject(forKey: "needAuthenticate") as! Bool, username: aDecoder.decodeObject(forKey: "username") as! String, host: aDecoder.decodeObject(forKey: "host") as! String, port: aDecoder.decodeObject(forKey: "port") as! Int, password: aDecoder.decodeObject(forKey: "password") as! String, pacUrl: aDecoder.decodeObject(forKey: "pacUrl") as! String, name: aDecoder.decodeObject(forKey: "name") as! String, descriptor: aDecoder.decodeObject(forKey: "descriptor") as! String, imageUrl: aDecoder.decodeObject(forKey: "imageUrl") as! String, cachedImage: aDecoder.decodeObject(forKey: "cachedImage") as! String, pacContent: aDecoder.decodeObject(forKey: "pacContent") as! String)
+    static func containsAndTyped<T> (coder aDecoder:NSCoder, forKey key: String) -> T? {
+        if aDecoder.containsValue(forKey: key), let tmp = aDecoder.decodeObject(forKey: key) as? T {
+                return tmp
+        }
+        return nil
+    }
+    required init(coder aDecoder: NSCoder){
+        super.init()
+        self.enable = Proxy.containsAndTyped(coder: aDecoder, forKey: "enable") ?? true
+        self.pacUrl = Proxy.containsAndTyped(coder: aDecoder, forKey: "pacUrl") ?? ""
+        self.pacContent = Proxy.containsAndTyped(coder: aDecoder, forKey: "pacContent") ?? ""
+        self.isAutomatic = Proxy.containsAndTyped(coder: aDecoder, forKey: "isAutomatic") ?? (!(self.pacUrl == "" && self.pacContent == "") )
+        self.username = Proxy.containsAndTyped(coder: aDecoder, forKey: "username") ?? ""
+        self.password = Proxy.containsAndTyped(coder: aDecoder, forKey: "password") ?? ""
+        self.needAuthenticate = Proxy.containsAndTyped(coder: aDecoder, forKey: "needAuthenticate") ?? (self.username != "" && self.password != "")
+        self.host = Proxy.containsAndTyped(coder: aDecoder, forKey: "host") ?? ""
+        self.port = Proxy.containsAndTyped(coder: aDecoder, forKey: "port") ?? 0
+        self.name = Proxy.containsAndTyped(coder: aDecoder, forKey: "name") ?? ""
+        self.descriptor = Proxy.containsAndTyped(coder: aDecoder, forKey: "descriptor") ?? ""
+        self.imageUrl = Proxy.containsAndTyped(coder: aDecoder, forKey: "imageUrl") ?? ""
+        self.cachedImage = Proxy.containsAndTyped(coder: aDecoder, forKey: "cachedImage") ?? ""
+    }
+    required init(from aDecoder: Decoder){
+        super.init()
+        let container = try! aDecoder.container(keyedBy: CodingKeys.self)
+        self.enable = try? container.decodeIfPresent(Bool.self, forKey: .enable) ?? true
+        self.pacUrl = try? container.decodeIfPresent(String.self, forKey: .pacUrl) ?? ""
+        self.pacContent = try? container.decodeIfPresent(String.self, forKey: .pacContent) ?? ""
+        self.isAutomatic = try? container.decodeIfPresent(Bool.self, forKey: .isAutomatic) ?? (!(self.pacUrl == "" && self.pacContent == "") )
+        self.username = try? container.decodeIfPresent(String.self, forKey: .username) ?? ""
+        self.password = try? container.decodeIfPresent(String.self, forKey: .password) ?? ""
+        self.needAuthenticate = try? container.decodeIfPresent(Bool.self, forKey: .needAuthenticate) ?? (self.username != "" && self.password != "")
+        self.host = try? container.decodeIfPresent(String.self, forKey: .host) ?? ""
+        self.port = try? container.decodeIfPresent(Int.self, forKey: .port) ?? 0
+        self.name = try? container.decodeIfPresent(String.self, forKey: .name) ?? ""
+        self.descriptor = try? container.decodeIfPresent(String.self, forKey: .descriptor) ?? ""
+        self.imageUrl = try? container.decodeIfPresent(String.self, forKey: .imageUrl) ?? ""
+        self.cachedImage = try? container.decodeIfPresent(String.self, forKey: .cachedImage) ?? ""
     }
     func encode(with aCoder: NSCoder) {
         aCoder.encode(enable, forKey: "enable")

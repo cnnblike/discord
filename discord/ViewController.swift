@@ -78,7 +78,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.        
+        // Do any additional setup after loading the view, typically from a nib.
         if let decoded = UserDefaults.standard.object(forKey: "proxies") {
             let decoderresult = decoded as! Data
             VpnManager.shared.proxies = NSKeyedUnarchiver.unarchiveObject(with: decoderresult) as! [Proxy]
@@ -102,9 +102,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func updateStored(){
+        print("updating stored")
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: VpnManager.shared.proxies)
         UserDefaults.standard.set(encodedData, forKey: "proxies")
         UserDefaults.standard.synchronize()
+        print("update done")
     }
 }
 

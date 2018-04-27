@@ -12,6 +12,7 @@ import AVFoundation
 class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
 
     var index: Int!
+    var proxy: Proxy!
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var navigationBar: UINavigationBar!
     @IBAction func onBackButtonClicked(_ sender: Any) {
@@ -101,12 +102,56 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
             if metadataObj.stringValue != nil {
-                print(metadataObj.stringValue!)
-                messageLabel.text = metadataObj.stringValue
+                guard let jsonData = metadataObj.stringValue!.data(using: .utf8) else {
+                    messageLabel.text = "maybe the encoding is wrong, don't know how to handle"
+                    return
+                }
+                // we have a string value here, check if it's json string or not
+                if isValidUrl(urlString: metadataObj.stringValue!){
+                    messageLabel.text = metadataObj.stringValue!
+                    self.proxy = Proxy()
+                    self.proxy.pacUrl = metadataObj.stringValue!
+                } else {
+                    // maybe it's a json and we can have it processed!
+                    do {
+                        self.proxy = try JSONDecoder().decode(Proxy.self, from: jsonData)
+                    } catch {
+                        messageLabel.text = "not a valid JSON object, nor a valid url"
+                        return
+                    }
+                }
+                let activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+                activityView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
+                activityView.center = self.view.center
+                activityView.startAnimating()
+                self.view.addSubview(activityView)
+                self.view.isUserInteractionEnabled = false
+                self.captureSession.stopRunning()
+                messageLabel.text = "processing"
+                validateAndDownload(item: self.proxy) { (result) in
+                    self.view.isUserInteractionEnabled = true
+                    self.view.willRemoveSubview(activityView)
+                    activityView.stopAnimating()
+                    
+                    switch result {
+                    case .warning:
+                        // since we know warning won't be a problem of usage, we just alert user and told them the pac image isn't working well and go on.
+                        let alert = UIAlertController(title: "Opps, the url to image may have problem", message: "but that won't affect your use", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                            self.goback()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    case .ok:
+                        self.goback()
+                    case .error:
+                        let alert = UIAlertController(title: "Opps, something went wrong", message: "check your input please", preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                            self.captureSession.startRunning()
+                        }))
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
             }
-            /*if let tempViewController = self.presentingViewController as? ViewController {
-                tempViewController.callbackFromOtherVC()
-            }*/
         }
     }
 
@@ -119,7 +164,16 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         // Pass the selected object to the new view controller.
     }
     */
+    func goback() {
+        if let tempViewController = self.presentingViewController as? ViewController {
+            // pass back change from here.
+            tempViewController.callbackFromOtherVC(index: self.index, item: self.proxy)
+            self.presentingViewController!.dismiss(animated: true) {
+                self.captureSession.startRunning()
+            }
 
+        }
+    }
 }
 
 

@@ -42,18 +42,22 @@ func validateAndDownload (item: Proxy, callback: @escaping (_ res:result)->()) -
         callback(.error)
     } else {
         // pacUrl -> pacContent
-        if item.isAutomatic && (!isValidUrl(urlString: item.pacUrl)){
+        if item.isAutomatic && (!isValidUrl(urlString: item.pacUrl)) && item.pacContent=="" {
             callback(.error)
-        } else if isValidUrl(urlString: item.pacUrl){
-            NetworkManager.sharedInstance.request(item.pacUrl).validate(statusCode: 200..<300).response { (response) in
-                if response.error == nil {
-                    if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
-                        item.pacContent = utf8Text
+        } else if item.isAutomatic && item.pacUrl != "" {
+            if isValidUrl(urlString: item.pacUrl){
+                NetworkManager.sharedInstance.request(item.pacUrl).validate(statusCode: 200..<300).response { (response) in
+                    if response.error == nil {
+                        if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                            item.pacContent = utf8Text
+                        }
+                        validateAndDownloadImage(item: item, callback: callback)
+                    } else {
+                        callback(.error)
                     }
-                    validateAndDownloadImage(item: item, callback: callback)
-                } else {
-                    callback(.error)
                 }
+            } else {
+                callback(.error)
             }
         } else {
             validateAndDownloadImage(item: item, callback: callback)
@@ -65,7 +69,11 @@ func validateAndDownload (item: Proxy, callback: @escaping (_ res:result)->()) -
 func validateAndDownloadImage( item:Proxy, callback: @escaping(_ res:result)-> ()) -> Void {
     // imageurl -> cachedImage
     if !isValidUrl(urlString: item.imageUrl) {
-        callback(.warning)
+        if item.imageUrl != ""{
+            callback(.warning)
+        } else {
+            callback(.ok)
+        }
     } else {
         NetworkManager.sharedInstance.request(item.imageUrl).validate(statusCode: 200..<300).responseImage { (response) in
             if response.error == nil && response.data != nil {

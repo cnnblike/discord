@@ -62,8 +62,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if let tempViewController = self.presentingViewController as? ViewController {
             // pass back change from here.
             tempViewController.callbackFromOtherVC(index: self.index, item: self.proxy)
+            self.presentingViewController!.dismiss(animated: true, completion: nil)
         }
-        self.presentingViewController!.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {

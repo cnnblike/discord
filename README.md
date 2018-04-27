@@ -8,8 +8,8 @@ carthage update --no-use-binaries --platform ios
 
 2. TODO:
 
-QR convert JSON string to object
 pacfile merge
+i18n
 
 3. TODO(Long-Term):
 
