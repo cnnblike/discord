@@ -12,7 +12,9 @@ private let KUserDefaultsProxys: String = {
     return "github.com/cnnblike/decensorship.git"
 }()
 
-class Proxy: NSObject, NSCoding, Codable {
+class Proxy: NSObject, NSSecureCoding, Codable {
+    static var supportsSecureCoding: Bool = true
+    
     var enable: Bool!
     var isAutomatic: Bool!
     var needAuthenticate: Bool!

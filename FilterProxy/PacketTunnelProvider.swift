@@ -7,23 +7,54 @@
 //
 
 import NetworkExtension
-
+import NEKit
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
     var lastPath:NWPath?
     var started:Bool = false
-    
+    var enableLocalProxy: Bool = false
+    var proxyServer: ProxyServer!
+    var proxyPort: Int!
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        // Use the build-in debug observer.
-        // ObserverFactory.currentFactory = DebugObserverFactory()
+        
+        if self.proxyPort == nil {
+            self.proxyPort = 9090
+        }
         
         guard let conf = (protocolConfiguration as! NETunnelProviderProtocol).providerConfiguration else {
             NSLog("[ERROR] No ProtocolConfiguration Found")
             exit(EXIT_FAILURE)
         }
-        
-        let settings = conf["settings"] as! [Proxy]
-
+        let settingString = conf["settings"] as! String
+        let settingData = settingString.data(using: .utf8)
+        let settings: [Proxy] = try! JSONDecoder().decode([Proxy].self, from: settingData!)
+        var pacFile: String  = ""
+        var capsules: [String] = []
+        for setting in settings {
+            var capsule: String = "" // actually a closure but the swift seems to have use `closure` as a reserved word
+            if setting.enable {
+                if setting.isAutomatic {
+                    capsule = "(function(){ \(String(setting.pacContent)); return FindProxyForURL })() "
+                } else {
+                    if setting.needAuthenticate {
+                        capsule = "function() { return \"PROXY 127.0.0.1:\(String(proxyPort)); DIRECT\" }"
+                        enableLocalProxy = true
+                        let httpAdapterFactory = HTTPAdapterFactory(serverHost: setting.host, serverPort: setting.port, auth: HTTPAuthentication(username: setting.username, password: setting.password))
+                        let allRule = AllRule(adapterFactory: httpAdapterFactory)
+                        RuleManager.currentManager = RuleManager(fromRules: [allRule], appendDirect: true)
+                        RawSocketFactory.TunnelProvider = self
+                    } else {
+                        capsule = "function() { return \"PROXY \(String(setting.host)):\(String(setting.port)); DIRECT\" }"
+                    }
+                    capsules.append(capsule)
+                    break
+                }
+                capsules.append(capsule)
+            }
+        }
+        let tempRule:String = capsules.joined(separator: ",")
+        pacFile =
+        "function FindProxyForURL(url,host){ rules = [\(tempRule)]\n for(var i = 0; i < rules.length; i++) {var result = rules[i](url,host); if ( (result !== \"DIRECT\") && (result !== undefined) ) return result;} return \"DIRECT\" }"
         // the `tunnelRemoteAddress` is meaningless because we are not creating a tunnel.
         let networkSettings = NEPacketTunnelNetworkSettings(tunnelRemoteAddress: "8.8.8.8")
         networkSettings.mtu = 1500
@@ -31,7 +62,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         let proxySettings = NEProxySettings()
         proxySettings.autoProxyConfigurationEnabled = true
-        proxySettings.proxyAutoConfigurationJavaScript = """
+        proxySettings.proxyAutoConfigurationJavaScript = pacFile
+        /*"""
         function FindProxyForURL(url, host)
         {
         var xx = (function(){
@@ -47,7 +79,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         return xx(url, host)
         }
 
-        """
+        """*/
         proxySettings.httpEnabled = false
         proxySettings.httpsEnabled = false
         proxySettings.excludeSimpleHostnames = true
@@ -62,10 +94,21 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                 completionHandler(error)
                 return
             }
-            
-            if !self.started {
-                self.addObserver(self, forKeyPath: "defaultPath", options: .initial, context: nil)
+            if self.enableLocalProxy {
+                if !self.started {
+                    self.proxyServer = GCDHTTPProxyServer(address: IPAddress(fromString: "127.0.0.1"), port: NEKit.Port(port: UInt16(self.proxyPort)))
+                    try! self.proxyServer.start()
+                    self.addObserver(self, forKeyPath: "defaultPath", options: .initial, context: nil)
+                } else {
+                    self.proxyServer.stop()
+                    try! self.proxyServer.start()
+                }
+            } else {
+                if !self.started {
+                    self.addObserver(self, forKeyPath: "defaultPath", options: .initial, context: nil)
+                }
             }
+
             completionHandler(nil)
             self.started = true
         }
@@ -73,6 +116,11 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
+        if(proxyServer != nil){
+            proxyServer.stop()
+            proxyServer = nil
+            RawSocketFactory.TunnelProvider = nil
+        }
         completionHandler()
         // don't know why, but the NEKit will continue to run for a small while, which make us unable to start another configuration instantly, so we manually cause a termination here.
         exit(EXIT_SUCCESS)

@@ -27,6 +27,16 @@
 		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15E743292092A3A7007FE07B /* ValidateAndDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E743282092A3A7007FE07B /* ValidateAndDownload.swift */; };
 		15E7432B2092E4F0007FE07B /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E7432A2092E4F0007FE07B /* AlamofireImage.framework */; };
+		15E7432C2093B48A007FE07B /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */; };
+		15E7432D2093B4A8007FE07B /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46189208D8ED30086C1C0 /* CocoaLumberjack.framework */; };
+		15E7432E2093B4A8007FE07B /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46192208D8ED30086C1C0 /* CocoaLumberjackSwift.framework */; };
+		15E7432F2093B4A8007FE07B /* lwip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46193208D8ED30086C1C0 /* lwip.framework */; };
+		15E743302093B4A8007FE07B /* MMDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A4208D8ED30086C1C0 /* MMDB.framework */; };
+		15E743312093B4A8007FE07B /* NEKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46177208D8ED30086C1C0 /* NEKit.framework */; };
+		15E743322093B4A8007FE07B /* Resolver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46187208D8ED30086C1C0 /* Resolver.framework */; };
+		15E743332093B4A8007FE07B /* Sodium.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46196208D8ED30086C1C0 /* Sodium.framework */; };
+		15E743342093B4A8007FE07B /* tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4617C208D8ED30086C1C0 /* tun2socks.framework */; };
+		15E743352093B4A8007FE07B /* Yaml.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4619B208D8ED30086C1C0 /* Yaml.framework */; };
 		15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3945208C29620065BBA5 /* QRViewController.swift */; };
 		15FF3948208C4F220065BBA5 /* ProxyUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15FF3947208C4F220065BBA5 /* ProxyUITableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -154,6 +164,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E7432D2093B4A8007FE07B /* CocoaLumberjack.framework in Frameworks */,
+				15E7432E2093B4A8007FE07B /* CocoaLumberjackSwift.framework in Frameworks */,
+				15E7432F2093B4A8007FE07B /* lwip.framework in Frameworks */,
+				15E743302093B4A8007FE07B /* MMDB.framework in Frameworks */,
+				15E743312093B4A8007FE07B /* NEKit.framework in Frameworks */,
+				15E743322093B4A8007FE07B /* Resolver.framework in Frameworks */,
+				15E743332093B4A8007FE07B /* Sodium.framework in Frameworks */,
+				15E743342093B4A8007FE07B /* tun2socks.framework in Frameworks */,
+				15E743352093B4A8007FE07B /* Yaml.framework in Frameworks */,
+				15E7432C2093B48A007FE07B /* CocoaAsyncSocket.framework in Frameworks */,
 				15479D6620897A69005FE945 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -327,6 +347,7 @@
 				15479D5120897A2C005FE945 /* Sources */,
 				15479D5220897A2C005FE945 /* Frameworks */,
 				15479D5320897A2C005FE945 /* Resources */,
+				15E743362093B4AE007FE07B /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -447,6 +468,39 @@
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		15E743362093B4AE007FE07B /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/lwip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MMDB.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/NEKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Resolver.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Sodium.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/tun2socks.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Yaml.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaAsyncSocket.framework",
+			);
+			outputPaths = (
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjack.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaLumberjackSwift.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/lwip.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/MMDB.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NEKit.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Resolver.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Sodium.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/tun2socks.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Yaml.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/CocoaAsyncSocket.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

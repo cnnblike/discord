@@ -160,7 +160,8 @@ extension VpnManager{
 
     fileprivate func setRulerConfig(_ manager:NETunnelProviderManager){
         var conf = [String:AnyObject]()
-        conf["settings"] = VpnManager.shared.proxies as AnyObject?
+        let data = try! JSONEncoder().encode(VpnManager.shared.proxies)
+        conf["settings"] = String(data: data, encoding: .utf8)! as AnyObject?
         let orignConf = manager.protocolConfiguration as! NETunnelProviderProtocol
         orignConf.providerConfiguration = conf
         manager.protocolConfiguration = orignConf

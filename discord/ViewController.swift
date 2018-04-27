@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Disk
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     var editEnabled: Bool = false
@@ -58,7 +57,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func callbackFromOtherVC(index: Int, item: Proxy){
         // process crud here
         VpnManager.shared.disconnect()
-        print("Callback triggered")
         // only trigger the following add process when it's actually new rule
         if index == VpnManager.shared.proxies.count {
             // insert here
@@ -102,11 +100,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func updateStored(){
-        print("updating stored")
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: VpnManager.shared.proxies)
         UserDefaults.standard.set(encodedData, forKey: "proxies")
         UserDefaults.standard.synchronize()
-        print("update done")
     }
 }
 
