@@ -10,3 +10,7 @@ carthage update --no-use-binaries --platform ios
 
 QR convert JSON string to object
 pacfile merge
+
+3. TODO(Long-Term):
+
+fix the leftover of images related to deleted/modified rules

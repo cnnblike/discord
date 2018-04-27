@@ -22,7 +22,6 @@
 		1563B3D62089787D00095446 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D52089787D00095446 /* Assets.xcassets */; };
 		1563B3D92089787D00095446 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1563B3D72089787D00095446 /* LaunchScreen.storyboard */; };
 		15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A46197208D8ED30086C1C0 /* Alamofire.framework */; };
-		15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A461A8208D8ED30086C1C0 /* Disk.framework */; };
 		15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461CC208EA73F0086C1C0 /* VPNManager.swift */; };
 		15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
@@ -165,7 +164,6 @@
 			files = (
 				15E7432B2092E4F0007FE07B /* AlamofireImage.framework in Frameworks */,
 				15A461B2208D94EC0086C1C0 /* Alamofire.framework in Frameworks */,
-				15A461B6208D94EC0086C1C0 /* Disk.framework in Frameworks */,
 				15479D6520897A5E005FE945 /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,13 +441,11 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Disk.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/AlamofireImage.framework",
 			);
 			name = "Run Script";
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Disk.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
