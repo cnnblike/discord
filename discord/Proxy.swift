@@ -12,7 +12,7 @@ private let KUserDefaultsProxys: String = {
     return "github.com/cnnblike/decensorship.git"
 }()
 
-class Proxy: NSObject {
+class Proxy: NSObject, NSCoding, Codable {
     var enable: Bool!
     var isAutomatic: Bool!
     var needAuthenticate: Bool!
@@ -46,13 +46,39 @@ class Proxy: NSObject {
         self.pacContent = ""
         
     }
-    init(name: String, host: String, port: Int, password: String, enable: Bool, description: String, username: String) {
+    init(enable:Bool, isAutomatic: Bool, needAuthenticate: Bool, username: String, host: String, port: Int, password: String, pacUrl: String, name: String, descriptor: String, imageUrl: String, cachedImage: String, pacContent: String) {
         super.init()
-        self.name = name
+        self.enable = enable
+        self.isAutomatic = isAutomatic
+        self.needAuthenticate = needAuthenticate
+        self.username = username
         self.host = host
         self.port = port
         self.password = password
-        self.enable = enable
-        self.descriptor = description
+        self.pacUrl = pacUrl
+        self.name = name
+        self.descriptor = descriptor
+        self.imageUrl = imageUrl
+        self.cachedImage = cachedImage
+        self.pacContent = pacContent
+        print(self)
+    }
+    required convenience init(coder aDecoder: NSCoder){
+        self.init(enable: aDecoder.decodeObject(forKey: "enable") as! Bool, isAutomatic: aDecoder.decodeObject(forKey: "isAutomatic") as! Bool, needAuthenticate: aDecoder.decodeObject(forKey: "needAuthenticate") as! Bool, username: aDecoder.decodeObject(forKey: "username") as! String, host: aDecoder.decodeObject(forKey: "host") as! String, port: aDecoder.decodeObject(forKey: "port") as! Int, password: aDecoder.decodeObject(forKey: "password") as! String, pacUrl: aDecoder.decodeObject(forKey: "pacUrl") as! String, name: aDecoder.decodeObject(forKey: "name") as! String, descriptor: aDecoder.decodeObject(forKey: "descriptor") as! String, imageUrl: aDecoder.decodeObject(forKey: "imageUrl") as! String, cachedImage: aDecoder.decodeObject(forKey: "cachedImage") as! String, pacContent: aDecoder.decodeObject(forKey: "pacContent") as! String)
+    }
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(enable, forKey: "enable")
+        aCoder.encode(isAutomatic, forKey: "isAutomatic")
+        aCoder.encode(needAuthenticate, forKey: "needAuthenticate")
+        aCoder.encode(username, forKey: "username")
+        aCoder.encode(host, forKey: "host")
+        aCoder.encode(port, forKey: "port")
+        aCoder.encode(password, forKey: "password")
+        aCoder.encode(pacUrl, forKey: "pacUrl")
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(descriptor, forKey: "descriptor")
+        aCoder.encode(imageUrl, forKey: "imageUrl")
+        aCoder.encode(cachedImage, forKey: "cachedImage")
+        aCoder.encode(pacContent, forKey: "pacContent")
     }
 }

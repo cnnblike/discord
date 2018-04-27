@@ -59,7 +59,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // process crud here
         VpnManager.shared.disconnect()
         print("Callback triggered")
-        // TODO: fix it, fake add here, only trigger the following add process when it's actually new rule
+        // only trigger the following add process when it's actually new rule
         if index == VpnManager.shared.proxies.count {
             // insert here
             tableView.beginUpdates()
@@ -73,13 +73,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             VpnManager.shared.proxies[index] = item
             tableView.reloadData()
         }
+        updateStored()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        VpnManager.shared.proxies = []
-        // Do any additional setup after loading the view, typically from a nib.
-        // TODO: Load stored data here
+        // Do any additional setup after loading the view, typically from a nib.        
+        if let decoded = UserDefaults.standard.object(forKey: "proxies") {
+            let decoderresult = decoded as! Data
+            VpnManager.shared.proxies = NSKeyedUnarchiver.unarchiveObject(with: decoderresult) as! [Proxy]
+        } else {
+            VpnManager.shared.proxies = []
+        }
         NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "kProxyServiceVPNStatusNotification"), object: nil, queue: nil) { (x: Notification) in
             if self.enableCell != nil {
                 self.enableCell?.enableSwitch.isOn = (VpnManager.shared.vpnStatus == .connecting) || (VpnManager.shared.vpnStatus == .on)
@@ -96,6 +101,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
+    func updateStored(){
+        let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: VpnManager.shared.proxies)
+        UserDefaults.standard.set(encodedData, forKey: "proxies")
+        UserDefaults.standard.synchronize()
+    }
 }
 
 
@@ -131,7 +141,6 @@ extension ViewController {
             }
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProxyCell", for: indexPath) as! ProxyUITableViewCell
-            // TODO: add actual status here
             cell.proxy = VpnManager.shared.proxies[indexPath.row]
             cell.nameLabel.text = cell.proxy.name
             cell.detailLabel.text = cell.proxy.descriptor
@@ -146,6 +155,7 @@ extension ViewController {
             cell.switchCallback = { (switcher: UISwitch) -> Void in
                 cell.proxy.enable = switcher.isOn
                 VpnManager.shared.disconnect()
+                self.updateStored()
                 // disconnect here so user have to update the proxy setting above.
             }
             return cell
@@ -165,7 +175,7 @@ extension ViewController {
                     tableView.deleteSections([1], with: .fade)
                 }
                 tableView.deleteRows(at: [indexPath], with: .fade)
-                // TODO: updateStored()
+                self.updateStored()
             }
             return [deleteAction]
         }
@@ -184,6 +194,7 @@ extension ViewController {
         let itemToMove = VpnManager.shared.proxies[sourceIndexPath.row]
         VpnManager.shared.proxies.remove(at: sourceIndexPath.row)
         VpnManager.shared.proxies.insert(itemToMove, at: destinationIndexPath.row)
+        self.updateStored()
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
