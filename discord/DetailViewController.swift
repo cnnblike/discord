@@ -24,7 +24,6 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func onSaveButtonClicked(_ sender: UIBarButtonItem) {
-        print(self.proxy)
         if let _ = self.presentingViewController {
             let activityView: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
             activityView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)

@@ -25,6 +25,8 @@
 		15A461CD208EA73F0086C1C0 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461CC208EA73F0086C1C0 /* VPNManager.swift */; };
 		15A461D3208EBAF80086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
 		15A461D4208EE25F0086C1C0 /* Proxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15A461D2208EBAF80086C1C0 /* Proxy.swift */; };
+		15BB6D682093F55B00AE2C25 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB6D672093F55B00AE2C25 /* AboutViewController.swift */; };
+		15BB6D6A20940E9C00AE2C25 /* ManualViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15BB6D6920940E9C00AE2C25 /* ManualViewController.swift */; };
 		15E743292092A3A7007FE07B /* ValidateAndDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E743282092A3A7007FE07B /* ValidateAndDownload.swift */; };
 		15E7432B2092E4F0007FE07B /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15E7432A2092E4F0007FE07B /* AlamofireImage.framework */; };
 		15E7432C2093B48A007FE07B /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15A4618A208D8ED30086C1C0 /* CocoaAsyncSocket.framework */; };
@@ -153,6 +155,8 @@
 		15A461B1208D8ED30086C1C0 /* .MMDB-Swift.version */ = {isa = PBXFileReference; lastKnownFileType = text; path = ".MMDB-Swift.version"; sourceTree = "<group>"; };
 		15A461CC208EA73F0086C1C0 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		15A461D2208EBAF80086C1C0 /* Proxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Proxy.swift; sourceTree = "<group>"; };
+		15BB6D672093F55B00AE2C25 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		15BB6D6920940E9C00AE2C25 /* ManualViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualViewController.swift; sourceTree = "<group>"; };
 		15E743282092A3A7007FE07B /* ValidateAndDownload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidateAndDownload.swift; sourceTree = "<group>"; };
 		15E7432A2092E4F0007FE07B /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
 		15FF3945208C29620065BBA5 /* QRViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
@@ -241,6 +245,8 @@
 				1563B3CE2089787C00095446 /* AppDelegate.swift */,
 				1563B3D02089787C00095446 /* ViewController.swift */,
 				1563B3D22089787C00095446 /* Main.storyboard */,
+				15BB6D6920940E9C00AE2C25 /* ManualViewController.swift */,
+				15BB6D672093F55B00AE2C25 /* AboutViewController.swift */,
 				1507571D2090CE1E009D9545 /* LabelWithInputTableViewCell.swift */,
 				1507571B2090CC76009D9545 /* AuthenticateTableViewCell.swift */,
 				1532B5E9208D370A00402772 /* EnableUITableViewCell.swift */,
@@ -533,6 +539,8 @@
 				1507571A2090C0BC009D9545 /* AutomaticOrManualUITableViewCell.swift in Sources */,
 				15E743292092A3A7007FE07B /* ValidateAndDownload.swift in Sources */,
 				1532B5EA208D370A00402772 /* EnableUITableViewCell.swift in Sources */,
+				15BB6D682093F55B00AE2C25 /* AboutViewController.swift in Sources */,
+				15BB6D6A20940E9C00AE2C25 /* ManualViewController.swift in Sources */,
 				15FF3946208C29620065BBA5 /* QRViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

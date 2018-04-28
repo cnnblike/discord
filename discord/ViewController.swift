@@ -116,7 +116,7 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 2 : VpnManager.shared.proxies.count
+        return section == 0 ? 3 : VpnManager.shared.proxies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -133,6 +133,9 @@ extension ViewController {
                     }
                 }
                 return enableCell
+            } else if indexPath.row == 1 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "ManualCell", for: indexPath)
+                return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "AboutCell", for: indexPath)
                 return cell
@@ -206,7 +209,11 @@ extension ViewController {
         if (indexPath.section != 0) || (indexPath.row != 0) {
             tableView.deselectRow(at: indexPath, animated: true)
             if (indexPath.section == 0 ){
-                // TODO: show a legal issue / About issue VC here
+                if indexPath.row == 1{
+                    performSegue(withIdentifier: "ShowManualView", sender: nil)
+                } else if indexPath.row == 2 {
+                    performSegue(withIdentifier: "ShowAboutView", sender: nil)
+                }
             } else {
                 // we are now handling the rules part. so we need to modify the items
                 performSegue(withIdentifier: "ShowDetailView", sender: indexPath)

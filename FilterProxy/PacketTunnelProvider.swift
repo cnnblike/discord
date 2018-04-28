@@ -62,23 +62,6 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         let proxySettings = NEProxySettings()
         proxySettings.autoProxyConfigurationEnabled = true
         proxySettings.proxyAutoConfigurationJavaScript = pacFile
-        /*"""
-        function FindProxyForURL(url, host)
-        {
-        var xx = (function(){
-        function FindProxyForURL(url, host)
-        {
-        proxy = "PROXY test.cnnblike.com:8001";
-        if (shExpMatch(host, "*cnnblike.com"))
-        return proxy;
-        return "DIRECT";
-        }
-        return FindProxyForURL
-        })()
-        return xx(url, host)
-        }
-
-        """*/
         proxySettings.httpEnabled = false
         proxySettings.httpsEnabled = false
         proxySettings.excludeSimpleHostnames = true

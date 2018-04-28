@@ -40,10 +40,10 @@ class Proxy: NSObject, NSSecureCoding, Codable {
         self.host = ""
         self.port = 0
         self.password = ""
-        self.pacUrl = "http://discord.cnnblike.com:3000/WSGun.pac"
+        self.pacUrl = ""
         self.name = ""
         self.descriptor = ""
-        self.imageUrl = "https://cdn4.iconfinder.com/data/icons/48x48-free-object-icons/48/Butterfly.png"
+        self.imageUrl = ""
         self.cachedImage = ""
         self.pacContent = ""
         
