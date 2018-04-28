@@ -78,9 +78,9 @@ extension VpnManager{
     fileprivate func createProviderManager() -> NETunnelProviderManager {
         let manager = NETunnelProviderManager()
         let conf = NETunnelProviderProtocol()
-        conf.serverAddress = "FFF"
+        conf.serverAddress = "N/A"
         manager.protocolConfiguration = conf
-        manager.localizedDescription = "FFF description"
+        manager.localizedDescription = "PAC HTTP Proxy on 4G/LTE"
         return manager
     }
     
