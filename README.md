@@ -8,6 +8,10 @@ It will keep free, without any kind of advertisement or In-App-Purchase. If you 
 
 To implement this, I've used several open-source project, including, but not limited to: [Alamofire/Alamofire](https://github.com/Alamofire/Alamofire), [Alamofire/Alamofire](https://github.com/Alamofire/AlamofireImage), [zhuhaow/NEKit](https://github.com/zhuhaow/NEKit). Many thanks to these awesome project and their developer.
 
+## Demo QR image
+
+![](./Capture.PNG)
+
 ## How to build a QR Code conform to this app
 
 This app accept QR code in two different content:
