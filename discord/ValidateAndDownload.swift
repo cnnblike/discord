@@ -71,6 +71,7 @@ func validateAndDownload (item: Proxy, callback: @escaping (_ res:result)->()) -
 func validateAndDownloadImage( item:Proxy, callback: @escaping(_ res:result)-> ()) -> Void {
     // imageurl -> cachedImage
     if !isValidUrl(urlString: item.imageUrl) {
+        item.cachedImage = ""
         if item.imageUrl != ""{
             callback(.warning)
         } else {
@@ -87,7 +88,7 @@ func validateAndDownloadImage( item:Proxy, callback: @escaping(_ res:result)-> (
                     callback(.warning)
                     return
                 }
-                if (image.cgImage!.width != 48) || (image.cgImage!.height != 48) {
+                if (image.cgImage!.width != image.cgImage!.height) || ((image.cgImage!.width != 48) && (image.cgImage!.width != 96) && (image.cgImage!.width != 144)){
                     callback(.warning)
                     return
                 } else {

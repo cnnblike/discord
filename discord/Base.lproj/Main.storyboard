@@ -110,8 +110,12 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="63.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="9U7-Ln-grB">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="9U7-Ln-grB">
                                                             <rect key="frame" x="15" y="7" width="48" height="48"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="48" id="HK3-kc-Hf0"/>
+                                                                <constraint firstAttribute="width" constant="48" id="Myn-ad-hLp"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukL-MB-Vel">
                                                             <rect key="frame" x="71" y="8" width="271" height="47"/>
@@ -403,7 +407,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aV7-Ee-27Q">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">To implement this project, I've used several open-source project, including, but not limited to: [Alamofire/Alamofire](https://github.com/Alamofire/Alamofire), [Alamofire/Alamofire](https://github.com/Alamofire/AlamofireImage), [zhuhaow/NEKit](https://github.com/zhuhaow/NEKit).
+                                <string key="text">To implement this project, I've used several open-source project, including, but not limited to: [Alamofire/Alamofire](https://github.com/Alamofire/Alamofire), [Alamofire/Alamofire](https://github.com/Alamofire/AlamofireImage), [zhuhaow/NEKit](https://github.com/zhuhaow/NEKit).
 
 ----
 
@@ -443,7 +447,7 @@ Redistributions in binary form must reproduce the above copyright notice, this l
 
 Neither the name of NEKit nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</mutableString>
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -541,10 +545,10 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-yE-B3t">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sjx-yE-B3t">
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <mutableString key="text">This is an project aimed to provide bare HTTP proxy under 4G/LTE with multiple proxy auto-config File or manual configuration, allowing you to manage your network with multiple PAC files. Since I'm just an amateur to Swift development and the project itself is more like a proof of concept prototype, instead of some serious long-term maintainable engineering product, I won't provide any kind of warranty, or any kind of "will fix ASAP" promise. For the same reason, I will also not write any kind of Test/Unit Test.
+                                <string key="text">This is an project aimed to provide bare HTTP proxy under 4G/LTE with multiple proxy auto-config File or manual configuration, allowing you to manage your network with multiple PAC files. Since I'm just an amateur to Swift development and the project itself is more like a proof of concept prototype, instead of some serious long-term maintainable engineering product, I won't provide any kind of warranty, or any kind of "will fix ASAP" promise. For the same reason, I will also not write any kind of Test/Unit Test.
 
 It will keep free, without any kind of advertisement or In-App-Purchase. If you really enjoy using this app, think about star my project: https://github.com/cnnblike/discord.git
 
@@ -591,7 +595,7 @@ To have an advanced configuration, we have even more configuration field availab
 11. `imageUrl`: field for image shown in main ViewController.
 
 12. `pacContent`: this field contains what's in the pac file. **Only configurable via QR JSON.**
-</mutableString>
+</string>
                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
