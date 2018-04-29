@@ -140,6 +140,11 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                             self.goback()
                         }))
+                        if let popoverController = alert.popoverPresentationController {
+                            popoverController.sourceView = self.view
+                            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                            popoverController.permittedArrowDirections = []
+                        }
                         self.present(alert, animated: true, completion: nil)
                     case .ok:
                         self.goback()
@@ -148,6 +153,11 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                             self.captureSession.startRunning()
                         }))
+                        if let popoverController = alert.popoverPresentationController {
+                            popoverController.sourceView = self.view
+                            popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                            popoverController.permittedArrowDirections = []
+                        }
                         self.present(alert, animated: true, completion: nil)
                     }
                 }

@@ -6,7 +6,7 @@ It will keep free, without any kind of advertisement or In-App-Purchase. If you 
 
 **YOU SHOULD ALSO BE AWARE, ANY KIND OF OPEN PROXY IS DANGEROUS, JUST USE THE ONE YOU CAN TRUST!**
 
-To implement this, I've used several open-source project, including, but not limited to: [Alamofire/Alamofire](https://github.com/Alamofire/Alamofire), [Alamofire/Alamofire](https://github.com/Alamofire/AlamofireImage), [zhuhaow/NEKit](https://github.com/zhuhaow/NEKit). Many thanks to these awesome project and their developer.
+To implement this, I've used several open-source project, including, but not limited to: [Alamofire/Alamofire](https://github.com/Alamofire/Alamofire), [Alamofire/AlamofireImage](https://github.com/Alamofire/AlamofireImage), [zhuhaow/NEKit](https://github.com/zhuhaow/NEKit). Many thanks to these awesome project and their developer.
 
 ## Demo QR image
 

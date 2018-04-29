@@ -44,6 +44,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                         self.goback()
                     }))
+                    if let popoverController = alert.popoverPresentationController {
+                        popoverController.sourceView = self.view
+                        popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                        popoverController.permittedArrowDirections = []
+                    }
                     self.present(alert, animated: true, completion: nil)
                 case .ok:
                     self.goback()
@@ -51,6 +56,11 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     let alert = UIAlertController(title: "Opps, something went wrong", message: "check your input please", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                     }))
+                    if let popoverController = alert.popoverPresentationController {
+                        popoverController.sourceView = self.view
+                        popoverController.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                        popoverController.permittedArrowDirections = []
+                    }
                     self.present(alert, animated: true, completion: nil)
                 }
             }

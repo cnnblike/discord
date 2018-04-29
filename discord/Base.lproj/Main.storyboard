@@ -57,7 +57,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usO-i1-vr3">
-                                                            <rect key="frame" x="350" y="8.6666666666666643" width="51" height="31"/>
+                                                            <rect key="frame" x="770" y="8.6666666666666643" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="switchChanged:" destination="ezk-nQ-DwA" eventType="valueChanged" id="Ve6-Lf-cZK"/>
                                                             </connections>
@@ -118,7 +118,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukL-MB-Vel">
-                                                            <rect key="frame" x="71" y="8" width="271" height="47"/>
+                                                            <rect key="frame" x="71" y="8" width="691" height="47"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFX-G1-AKm">
                                                                     <rect key="frame" x="2" y="0.0" width="42" height="21"/>
@@ -144,7 +144,7 @@
                                                             </constraints>
                                                         </view>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-Du-X6v">
-                                                            <rect key="frame" x="350" y="16" width="51" height="31"/>
+                                                            <rect key="frame" x="770" y="16" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="switchChanged:" destination="uMT-6v-Qbm" eventType="valueChanged" id="XES-6B-LEV"/>
                                                             </connections>
@@ -258,7 +258,7 @@
                                 <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AutoCell" id="Rb2-Kc-bQ2" customClass="AutomaticOrManualUITableViewCell" customModule="discord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AutoCell" id="Rb2-Kc-bQ2" customClass="AutomaticOrManualUITableViewCell" customModule="discord" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Rb2-Kc-bQ2" id="uSc-tJ-kW9">
@@ -286,7 +286,7 @@
                                             <outlet property="segmentControl" destination="RR2-02-1Hf" id="ReS-lR-hTi"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AuthCell" id="vg3-mh-JO1" customClass="AuthenticateTableViewCell" customModule="discord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AuthCell" id="vg3-mh-JO1" customClass="AuthenticateTableViewCell" customModule="discord" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.333333333333343" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vg3-mh-JO1" id="tUS-8Q-vhX">
@@ -294,7 +294,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authenticate" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZYL-0U-sf4">
-                                                    <rect key="frame" x="19.999999999999993" y="12" width="97.333333333333314" height="21"/>
+                                                    <rect key="frame" x="20.000000000000007" y="12" width="97.666666666666686" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -319,7 +319,7 @@
                                             <outlet property="switcher" destination="n7G-aT-iEC" id="nHH-pK-VrI"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelCell" id="Mfw-qc-t7P" customClass="LabelWithInputTableViewCell" customModule="discord" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LabelCell" id="Mfw-qc-t7P" customClass="LabelWithInputTableViewCell" customModule="discord" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="143.33333333333334" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mfw-qc-t7P" id="elK-FL-8w3">
@@ -327,13 +327,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-De-PZe">
-                                                    <rect key="frame" x="19.999999999999996" y="12" width="41.666666666666657" height="21"/>
+                                                    <rect key="frame" x="20" y="12" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IFD-Ve-kzO">
-                                                    <rect key="frame" x="81.666666666666657" y="13.666666666666664" width="312.33333333333337" height="17"/>
+                                                    <rect key="frame" x="82" y="13.666666666666664" width="312" height="17"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" returnKeyType="done"/>
