@@ -40,8 +40,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 switch res {
                 case .warning:
                     // since we know warning won't be a problem of usage, we just alert user and told them the pac image isn't working well and go on.
-                    let alert = UIAlertController(title: "Opps, something went wrong", message: "but that won't affect your use", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                    let alert = UIAlertController(title: NSLocalizedString("Opps, something went wrong", comment: ""), message: NSLocalizedString("but that won't affect your use", comment:""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (alertAction) in
                         self.goback()
                     }))
                     if let popoverController = alert.popoverPresentationController {
@@ -53,8 +53,8 @@ class DetailViewController: UIViewController, UITableViewDelegate, UITableViewDa
                 case .ok:
                     self.goback()
                 case .error:
-                    let alert = UIAlertController(title: "Opps, something went wrong", message: "check your input please", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
+                    let alert = UIAlertController(title: NSLocalizedString("Opps, something went wrong", comment: ""), message: NSLocalizedString("check your input please", comment:""), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("Ok", comment: ""), style: .default, handler: { (alertAction) in
                     }))
                     if let popoverController = alert.popoverPresentationController {
                         popoverController.sourceView = self.view
@@ -134,7 +134,7 @@ extension DetailViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "CONFIG" : "NETWORK"
+        return section == 0 ? NSLocalizedString("CONFIG", comment:"") : NSLocalizedString("NETWORK", comment: "")
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,7 +145,7 @@ extension DetailViewController {
                 cell.textFieldCallback = {(textField: UITextField) -> Void in
                     self.proxy.name = textField.text
                 }
-                cell.hintLabel.text = "Name"
+                cell.hintLabel.text = NSLocalizedString("Name", comment: "")
                 cell.textField.text = proxy.name
                 return cell
             } else if indexPath.row == 1 {
@@ -154,7 +154,7 @@ extension DetailViewController {
                 cell.textFieldCallback = {(textField: UITextField) -> Void in
                     self.proxy.descriptor = textField.text
                 }
-                cell.hintLabel.text = "Description"
+                cell.hintLabel.text = NSLocalizedString("Description", comment: "")
                 cell.textField.text = proxy.descriptor
                 return cell
             } else if indexPath.row == 2 {
@@ -163,7 +163,7 @@ extension DetailViewController {
                 cell.textFieldCallback = {(textField: UITextField) -> Void in
                     self.proxy.imageUrl = textField.text
                 }
-                cell.hintLabel.text = "Image URL"
+                cell.hintLabel.text = NSLocalizedString("Image URL", comment: "")
                 cell.textField.text = proxy.imageUrl
                 return cell
             } else if indexPath.row == 3 {
@@ -172,7 +172,7 @@ extension DetailViewController {
                 cell.switchCallback = { (switcher: UISwitch) -> Void in
                     self.proxy.enable = switcher.isOn
                 }
-                cell.hintLabel.text = "Enable"
+                cell.hintLabel.text = NSLocalizedString("Enable", comment: "")
                 cell.switcher.isOn = proxy.enable
                 return cell
             } else {
@@ -192,7 +192,7 @@ extension DetailViewController {
                 cell.textFieldCallback = { (textField: UITextField) -> Void in
                     self.proxy.pacUrl = textField.text
                 }
-                cell.hintLabel.text = "PAC URL"
+                cell.hintLabel.text = NSLocalizedString("PAC URL", comment: "")
                 cell.textField.text = self.proxy.pacUrl
                 cell.textField.isEnabled = proxy.isAutomatic
                 cell.hintLabel.isEnabled = proxy.isAutomatic
@@ -203,7 +203,7 @@ extension DetailViewController {
                 cell.textFieldCallback = { (textField: UITextField) -> Void in
                     self.proxy.host = textField.text
                 }
-                cell.hintLabel.text = "Server"
+                cell.hintLabel.text = NSLocalizedString("Server", comment: "")
                 cell.textField.text = proxy.host
                 cell.textField.isEnabled = !proxy.isAutomatic
                 cell.hintLabel.isEnabled = !proxy.isAutomatic
@@ -220,7 +220,7 @@ extension DetailViewController {
                         textField.text = "0"
                     }
                 }
-                cell.hintLabel.text = "Port"
+                cell.hintLabel.text = NSLocalizedString("Port", comment: "")
                 cell.textField.text = String(proxy.port)
                 cell.textField.isEnabled = !proxy.isAutomatic
                 cell.hintLabel.isEnabled = !proxy.isAutomatic
@@ -243,7 +243,7 @@ extension DetailViewController {
                 cell.textFieldCallback = { (textField: UITextField) -> Void in
                     self.proxy.username = textField.text
                 }
-                cell.hintLabel.text = "Username"
+                cell.hintLabel.text = NSLocalizedString("Username", comment: "")
                 cell.textField.text = proxy.username
                 cell.textField.isEnabled = (!proxy.isAutomatic) && (proxy.needAuthenticate)
                 cell.hintLabel.isEnabled = (!proxy.isAutomatic) && (proxy.needAuthenticate)
@@ -254,7 +254,7 @@ extension DetailViewController {
                 cell.textFieldCallback = { (textField: UITextField) -> Void in
                     self.proxy.password = textField.text
                 }
-                cell.hintLabel.text = "Password"
+                cell.hintLabel.text = NSLocalizedString("Password", comment: "")
                 cell.textField.text = proxy.password
                 cell.textField.isEnabled = (!proxy.isAutomatic) && (proxy.needAuthenticate)
                 cell.hintLabel.isEnabled = (!proxy.isAutomatic) && (proxy.needAuthenticate)

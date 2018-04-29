@@ -15,15 +15,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func onAddNewProxyButtonClicked(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "QR Code", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("QR Code", comment: ""), style: .default) { _ in
             self.performSegue(withIdentifier: "ShowQRView", sender: nil)
         })
         
-        alert.addAction(UIAlertAction(title: "Input Manually", style: .default) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Input Manually", comment: ""), style: .default) { _ in
             self.performSegue(withIdentifier: "ShowDetailView", sender: nil)
         })
 
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel) { _ in
         })
         
         if let popoverController = alert.popoverPresentationController {
@@ -169,7 +169,7 @@ extension ViewController {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "Global" : "Rules"
+        return section == 0 ? NSLocalizedString("Global", comment: ""): NSLocalizedString("Rules", comment: "")
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {

@@ -56,7 +56,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                 return
             }
         } else {
-            self.messageLabel.text = "Can't get video access"
+            self.messageLabel.text = NSLocalizedString("Can't get video access", comment: "")
         }
         videoPreviewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
         videoPreviewLayer?.videoGravity = AVLayerVideoGravity.resizeAspectFill
@@ -89,7 +89,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
             qrCodeFrameView?.frame = CGRect.zero
-            messageLabel.text = "No QR code is detected"
+            messageLabel.text = NSLocalizedString("No QR code is detected", comment: "")
             return
         }
         
@@ -103,7 +103,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
             
             if metadataObj.stringValue != nil {
                 guard let jsonData = metadataObj.stringValue!.data(using: .utf8) else {
-                    messageLabel.text = "maybe the encoding is wrong, don't know how to handle"
+                    messageLabel.text = NSLocalizedString("maybe the encoding is wrong, don't know how to handle", comment: "")
                     return
                 }
                 // we have a string value here, check if it's json string or not
@@ -116,7 +116,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                     do {
                         self.proxy = try JSONDecoder().decode(Proxy.self, from: jsonData)
                     } catch {
-                        messageLabel.text = "not a valid JSON object, nor a valid url"
+                        messageLabel.text = NSLocalizedString("not a valid JSON object, nor a valid url", comment: "")
                         return
                     }
                 }
@@ -127,7 +127,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                 self.view.addSubview(activityView)
                 self.view.isUserInteractionEnabled = false
                 self.captureSession.stopRunning()
-                messageLabel.text = "processing"
+                messageLabel.text = NSLocalizedString("processing", comment: "")
                 validateAndDownload(item: self.proxy) { (result) in
                     self.view.isUserInteractionEnabled = true
                     self.view.willRemoveSubview(activityView)
@@ -136,7 +136,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                     switch result {
                     case .warning:
                         // since we know warning won't be a problem of usage, we just alert user and told them the pac image isn't working well and go on.
-                        let alert = UIAlertController(title: "Opps, the url to image may have problem", message: "but that won't affect your use", preferredStyle: .alert)
+                        let alert = UIAlertController(title: NSLocalizedString("Opps, the url to image may have problem", comment: ""), message: NSLocalizedString("but that won't affect your use", comment: ""), preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                             self.goback()
                         }))
@@ -149,7 +149,7 @@ class QRViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate
                     case .ok:
                         self.goback()
                     case .error:
-                        let alert = UIAlertController(title: "Opps, something went wrong", message: "check your input please", preferredStyle: .alert)
+                        let alert = UIAlertController(title: NSLocalizedString("Opps, something went wrong", comment: ""), message: NSLocalizedString("check your input please", comment: ""), preferredStyle: .alert)
                         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (alertAction) in
                             self.captureSession.startRunning()
                         }))

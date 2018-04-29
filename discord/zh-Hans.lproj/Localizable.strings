@@ -1,0 +1,33 @@
+/* 
+  Localizable.strings
+  discord
+
+  Created by Ke Li on 4/29/18.
+  Copyright © 2018 Ke Li. All rights reserved.
+*/
+"Global" = "全局配置" ;
+"Rules" = "代理选项" ;
+"QR Code" = "QR 码" ;
+"Input Manually" = "手动输入" ;
+"Cancel" = "取消" ;
+"Opps, something went wrong" = "啊哦，好像有地方不对" ;
+"but that won't affect your use" = "但这不会影响你使用代理" ;
+"Ok" = "好吧" ;
+"check your input please" = "再检查一下吧" ;
+"CONFIG" = "配置" ;
+"NETWORK" = "网络选项" ;
+"Name" = "名称" ;
+"Description" = "描述" ;
+"Image URL" = "图片链接" ;
+"Enable" = "激活" ;
+"PAC URL" = "PAC 地址" ;
+"Server" = "服务器地址" ;
+"Port" = "端口" ;
+"Username" = "用户名" ;
+"Password" = "密码" ;
+"Can't get video access" = "没有摄像头权限" ;
+"No QR code is detected" = "没检测到QR码" ;
+"maybe the encoding is wrong, don't know how to handle" = "编码可能有误" ;
+"not a valid JSON object, nor a valid url" = "既不是有效的JSON对象，也不是有效的URL" ;
+"Opps, the url to image may have problem" = "啊哦，图片链接有点问题" ;
+"processing" = "处理中" ;
