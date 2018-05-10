@@ -175,12 +175,9 @@ extension ViewController {
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         if indexPath.section == 1 {
             let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (uiTableViewRowAction, indexPath) in
-                VpnManager.shared.proxies.remove(at: indexPath.row)
                 VpnManager.shared.disconnect()
-                if VpnManager.shared.proxies.count == 0 {
-                    tableView.deleteSections([1], with: .fade)
-                }
-                tableView.deleteRows(at: [indexPath], with: .fade)
+                VpnManager.shared.proxies.remove(at: indexPath.row)
+                self.tableView.reloadData()
                 self.updateStored()
             }
             return [deleteAction]
