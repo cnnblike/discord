@@ -52,13 +52,13 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ta9-EV-X9I">
-                                                            <rect key="frame" x="15" y="13.666666666666664" width="52" height="21"/>
+                                                            <rect key="frame" x="20" y="13.666666666666664" width="52" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="usO-i1-vr3">
-                                                            <rect key="frame" x="311" y="8.6666666666666643" width="51" height="31"/>
+                                                            <rect key="frame" x="350" y="8.6666666666666643" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="switchChanged:" destination="ezk-nQ-DwA" eventType="valueChanged" id="Ve6-Lf-cZK"/>
                                                             </connections>
@@ -69,7 +69,7 @@
                                                         <constraint firstItem="usO-i1-vr3" firstAttribute="centerY" secondItem="xOv-aH-V04" secondAttribute="centerY" id="Ota-y4-GM1"/>
                                                         <constraint firstItem="ta9-EV-X9I" firstAttribute="centerY" secondItem="xOv-aH-V04" secondAttribute="centerY" id="d5J-bp-ufX"/>
                                                         <constraint firstItem="usO-i1-vr3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ta9-EV-X9I" secondAttribute="trailing" constant="50" id="hZ9-4S-fj5"/>
-                                                        <constraint firstItem="ta9-EV-X9I" firstAttribute="leading" secondItem="xOv-aH-V04" secondAttribute="leading" constant="15" id="iYr-fU-BxC"/>
+                                                        <constraint firstItem="ta9-EV-X9I" firstAttribute="leading" secondItem="xOv-aH-V04" secondAttribute="leading" constant="20" id="iYr-fU-BxC"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -119,7 +119,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ukL-MB-Vel">
-                                                            <rect key="frame" x="71" y="8" width="232" height="47"/>
+                                                            <rect key="frame" x="71" y="8" width="271" height="47"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SFX-G1-AKm">
                                                                     <rect key="frame" x="2" y="0.0" width="42" height="21"/>
@@ -145,7 +145,7 @@
                                                             </constraints>
                                                         </view>
                                                         <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ehy-Du-X6v">
-                                                            <rect key="frame" x="311" y="16" width="51" height="31"/>
+                                                            <rect key="frame" x="350" y="16" width="51" height="31"/>
                                                             <connections>
                                                                 <action selector="switchChanged:" destination="uMT-6v-Qbm" eventType="valueChanged" id="XES-6B-LEV"/>
                                                             </connections>
