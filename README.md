@@ -64,10 +64,6 @@ carthage update --no-use-binaries --platform ios
 
 1. TODO
 
-Internalization
-
-LOGO(a better one)
-
 Fix the leftover of images related to deleted/modified rules
 
 1. LICENSE
